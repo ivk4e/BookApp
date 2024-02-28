@@ -9,7 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BookApp.Data\BookApp.Data.csproj" />
-    <ProjectReference Include="..\BookApp.Models\BookApp.Data.Models.csproj" />
+    <ProjectReference Include="..\BookApp.Models\BookApp.Models.csproj" />
   </ItemGroup>
 
 </Project>
