@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookApp.Data", "BookApp.Dat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookApp.Models", "BookApp.Models\BookApp.Models.csproj", "{89DD294C-CC88-4D08-A141-1E2B630E7EAD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookApp.Forms.Login", "BookApp.Forms.Login\BookApp.Forms.Login.csproj", "{A802FD31-4F8F-4676-B38C-11E6E8D0C707}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{89DD294C-CC88-4D08-A141-1E2B630E7EAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89DD294C-CC88-4D08-A141-1E2B630E7EAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89DD294C-CC88-4D08-A141-1E2B630E7EAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A802FD31-4F8F-4676-B38C-11E6E8D0C707}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A802FD31-4F8F-4676-B38C-11E6E8D0C707}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A802FD31-4F8F-4676-B38C-11E6E8D0C707}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A802FD31-4F8F-4676-B38C-11E6E8D0C707}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
