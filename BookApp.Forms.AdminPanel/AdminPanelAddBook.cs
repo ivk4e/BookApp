@@ -1,12 +1,9 @@
 using BookApp.Forms.Login;
-using System.ComponentModel;
 
 namespace BookApp.Forms.AdminPanel
 {
 	public partial class AdminPanelAddBook : Form
 	{
-		private bool shouldClose = false;
-
 		public AdminPanelAddBook()
 		{
 			InitializeComponent();
@@ -24,39 +21,44 @@ namespace BookApp.Forms.AdminPanel
 
 		private void label4_Click(object sender, EventArgs e)
 		{
-			this.Hide();
-			new LoginForm().ShowDialog();
-			this.Close();
+			//this.Hide();
+			//new LoginForm().ShowDialog();
+			//this.Close();
+
+			FormUtility.ShowNewForm<LoginForm>(this);
 		}
 
 		private void usersPictureButton_Click(object sender, EventArgs e)
 		{
-			this.Hide();
-			new AdminPanelRules().ShowDialog();
-			this.Close();
+			//this.Hide();
+			//new AdminPanelRules().ShowDialog();
+			//this.Close();
+
+			FormUtility.ShowNewForm<AdminPanelRules>(this);
 		}
 
 		private void ordersImageButton_Click(object sender, EventArgs e)
 		{
-			this.Hide();
-			new AdminPanelClientOrders().ShowDialog();
+			//this.Hide();
+			//new AdminPanelClientOrders().ShowDialog();
+
+			FormUtility.ShowNewForm<AdminPanelClientOrders>(this);
 		}
 
 		private void exit_Click(object sender, EventArgs e)
 		{
-			shouldClose = true;
-			this.Close();
+			FormUtility.ShowNewForm<LoginForm>(this);
 		}
 
-		protected override void OnClosing(CancelEventArgs e)
-		{
-			base.OnClosing(e);
+		//protected override void OnClosing(CancelEventArgs e)
+		//{
+		//	base.OnClosing(e);
 
-			if (shouldClose)
-			{
-				this.Hide();
-				new LoginForm().ShowDialog();
-			}
-		}
+		//	if (shouldClose)
+		//	{
+		//		this.Hide();
+		//		new LoginForm().ShowDialog();
+		//	}
+		//}
 	}
 }

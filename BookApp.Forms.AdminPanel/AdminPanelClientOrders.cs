@@ -1,12 +1,9 @@
 using BookApp.Forms.Login;
-using System.ComponentModel;
 
 namespace BookApp.Forms.AdminPanel
 {
 	public partial class AdminPanelClientOrders : Form
 	{
-		private bool shouldClose = false;
-
 		public AdminPanelClientOrders()
 		{
 			InitializeComponent();
@@ -19,33 +16,39 @@ namespace BookApp.Forms.AdminPanel
 
 		private void usersPictureButton_Click_1(object sender, EventArgs e)
 		{
-			this.Hide();
-			new AdminPanelRules().ShowDialog();
-			this.Close();
+			//this.Hide();
+			//new AdminPanelRules().ShowDialog();
+			//this.Close();
+
+			FormUtility.ShowNewForm<AdminPanelRules>(this);
 		}
 
 		private void addBooksImageButton_Click_1(object sender, EventArgs e)
 		{
-			this.Hide();
-			new AdminPanelAddBook().ShowDialog();
-			this.Close();
+			//this.Hide();
+			//new AdminPanelAddBook().ShowDialog();
+			//this.Close();
+
+			FormUtility.ShowNewForm<AdminPanelAddBook>(this);
 		}
 
 		private void exit_Click_1(object sender, EventArgs e)
 		{
-			shouldClose = true;
-			this.Close();
+			//shouldClose = true;
+			//this.Close();
+
+			FormUtility.ShowNewForm<LoginForm>(this);
 		}
 
-		protected override void OnClosing(CancelEventArgs e)
-		{
-			base.OnClosing(e);
+		//protected override void OnClosing(CancelEventArgs e)
+		//{
+		//	base.OnClosing(e);
 
-			if (shouldClose)
-			{
-				this.Hide();
-				new LoginForm().ShowDialog();
-			}
-		}
+		//	if (shouldClose)
+		//	{
+		//		this.Hide();
+		//		new LoginForm().ShowDialog();
+		//	}
+		//}
 	}
 }
