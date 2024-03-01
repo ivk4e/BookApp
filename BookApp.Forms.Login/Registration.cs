@@ -1,8 +1,8 @@
 namespace BookApp.Forms.Login
 {
-	public partial class Login : Form
+	public partial class Registration : Form
 	{
-		public Login()
+		public Registration()
 		{
 			InitializeComponent();
 		}

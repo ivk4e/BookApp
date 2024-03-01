@@ -1,4 +1,4 @@
-namespace BookApp.Forms.Login
+namespace BookApp.Forms.AdminPanel
 {
 	internal static class Program
 	{
@@ -11,8 +11,7 @@ namespace BookApp.Forms.Login
 			// To customize application configuration such as set high DPI settings or default font,
 			// see https://aka.ms/applicationconfiguration.
 			ApplicationConfiguration.Initialize();
-			Application.Run(new LoginForm());
-			Application.Run(new Registration());
+			Application.Run(new AdminPanelRules());
 		}
 	}
 }

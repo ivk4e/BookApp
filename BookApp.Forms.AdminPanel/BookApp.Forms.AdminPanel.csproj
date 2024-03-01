@@ -9,20 +9,30 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Update="Registration.cs">
+    <ProjectReference Include="..\BookApp.Forms.Login\BookApp.Forms.Login.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="AdminPanelAddBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="AdminPanelClientOrders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="AdminPanelRules.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
   </ItemGroup>
 

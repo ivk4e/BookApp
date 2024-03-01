@@ -15,6 +15,8 @@ namespace BookApp.Data.Models
 
 		public decimal Amount { get; set; }
 
+		public DateTime DateOrder { get; set; }
+
 		public virtual ICollection<BookOrder> BookOrders { get; set; } = new HashSet<BookOrder>();
 	}
 }
