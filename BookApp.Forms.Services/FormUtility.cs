@@ -1,6 +1,8 @@
-﻿namespace BookApp.Forms.AdminPanel
+﻿using System.Windows.Forms;
+
+namespace BookApp.Forms.Services
 {
-	public static class FormUtility
+	public class FormUtility
 	{
 		public static void ShowNewForm<T>(Form currentForm)
 			where T : Form, new()

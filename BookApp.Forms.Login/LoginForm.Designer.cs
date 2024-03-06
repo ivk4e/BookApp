@@ -132,6 +132,7 @@
 			button1.Text = "Влез";
 			button1.UseMnemonic = false;
 			button1.UseVisualStyleBackColor = false;
+			button1.Click += button1_Click;
 			// 
 			// textBox2
 			// 
@@ -186,7 +187,7 @@
 			pictureBox2.TabStop = false;
 			pictureBox2.Click += pictureBox2_Click;
 			// 
-			// Login
+			// LoginForm
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
@@ -196,7 +197,7 @@
 			Controls.Add(panel2);
 			Controls.Add(panel1);
 			FormBorderStyle = FormBorderStyle.None;
-			Name = "Login";
+			Name = "LoginForm";
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "Login";
 			panel1.ResumeLayout(false);

@@ -1,6 +1,6 @@
 ﻿namespace BookApp.Forms.Login
 {
-	partial class Registration
+	partial class RegistrationView
 	{
 		/// <summary>
 		///  Required designer variable.
@@ -190,6 +190,7 @@
 			button1.Text = "Регистрация";
 			button1.UseMnemonic = false;
 			button1.UseVisualStyleBackColor = false;
+			button1.Click += button1_Click;
 			// 
 			// textBox2
 			// 
@@ -256,7 +257,7 @@
 			FormBorderStyle = FormBorderStyle.None;
 			Name = "Registration";
 			StartPosition = FormStartPosition.CenterScreen;
-			Text = "Login";
+			Text = "Registration";
 			panel1.ResumeLayout(false);
 			panel1.PerformLayout();
 			panel2.ResumeLayout(false);

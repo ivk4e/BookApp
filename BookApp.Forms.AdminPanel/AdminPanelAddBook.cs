@@ -1,4 +1,4 @@
-using BookApp.Forms.Login;
+using BookApp.Forms.Services;
 
 namespace BookApp.Forms.AdminPanel
 {
@@ -21,44 +21,26 @@ namespace BookApp.Forms.AdminPanel
 
 		private void label4_Click(object sender, EventArgs e)
 		{
-			//this.Hide();
-			//new LoginForm().ShowDialog();
-			//this.Close();
-
-			FormUtility.ShowNewForm<LoginForm>(this);
+			this.Dispose();
 		}
 
 		private void usersPictureButton_Click(object sender, EventArgs e)
 		{
-			//this.Hide();
-			//new AdminPanelRules().ShowDialog();
-			//this.Close();
-
 			FormUtility.ShowNewForm<AdminPanelRules>(this);
 		}
 
 		private void ordersImageButton_Click(object sender, EventArgs e)
 		{
-			//this.Hide();
-			//new AdminPanelClientOrders().ShowDialog();
-
 			FormUtility.ShowNewForm<AdminPanelClientOrders>(this);
 		}
 
 		private void exit_Click(object sender, EventArgs e)
 		{
-			FormUtility.ShowNewForm<LoginForm>(this);
+			this.Dispose();
 		}
 
-		//protected override void OnClosing(CancelEventArgs e)
-		//{
-		//	base.OnClosing(e);
-
-		//	if (shouldClose)
-		//	{
-		//		this.Hide();
-		//		new LoginForm().ShowDialog();
-		//	}
-		//}
+		private void authorImageBox_Click(object sender, EventArgs e)
+		{
+		}
 	}
 }

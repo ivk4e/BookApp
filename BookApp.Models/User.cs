@@ -24,7 +24,7 @@ namespace BookApp.Data.Models
 
 		public DateTime Birthday { get; set; }
 
-		public int UserTypeId { get; set; }
+		public int UserTypeId { get; set; } = 3;
 		public UserType UserType { get; set; }
 
 		public virtual ICollection<Order> Orders { get; set; } = new HashSet<Order>();

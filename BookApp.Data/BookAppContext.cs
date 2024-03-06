@@ -29,6 +29,7 @@ namespace BookApp.Data
 
 		public DbSet<UserType> UserTypes { get; set; }
 
+		public DbSet<BookOrder> BookOrders { get; set; }
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{

@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BookApp.Forms.AdminPanel\BookApp.Forms.AdminPanel.csproj" />
+    <ProjectReference Include="..\BookApp.Forms.Login\BookApp.Forms.Login.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="WorkerAddBooks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="WorkerViewBooks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="WorkerViewProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="WorkersViewOrders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

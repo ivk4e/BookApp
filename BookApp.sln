@@ -11,7 +11,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookApp.Models", "BookApp.M
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookApp.Forms.Login", "BookApp.Forms.Login\BookApp.Forms.Login.csproj", "{A802FD31-4F8F-4676-B38C-11E6E8D0C707}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookApp.Forms.AdminPanel", "BookApp.Forms.AdminPanel\BookApp.Forms.AdminPanel.csproj", "{3E22D981-DC0C-48DB-8FAC-3DEC24F8CDBA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookApp.Forms.AdminPanel", "BookApp.Forms.AdminPanel\BookApp.Forms.AdminPanel.csproj", "{3E22D981-DC0C-48DB-8FAC-3DEC24F8CDBA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookApp.Forms.Workers", "BookApp.Forms.Workers\BookApp.Forms.Workers.csproj", "{0D9D5B40-15B9-44CD-B905-28C824A1683C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookApp.Forms.Users", "BookApp.Forms.Users\BookApp.Forms.Users.csproj", "{7D36DFB7-5311-4C05-BED1-1A9939E37218}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookApp.Forms.Services", "BookApp.Forms.Services\BookApp.Forms.Services.csproj", "{AC12427A-36E3-455F-9EDB-8F77BB69BE87}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +45,18 @@ Global
 		{3E22D981-DC0C-48DB-8FAC-3DEC24F8CDBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E22D981-DC0C-48DB-8FAC-3DEC24F8CDBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E22D981-DC0C-48DB-8FAC-3DEC24F8CDBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D9D5B40-15B9-44CD-B905-28C824A1683C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D9D5B40-15B9-44CD-B905-28C824A1683C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D9D5B40-15B9-44CD-B905-28C824A1683C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D9D5B40-15B9-44CD-B905-28C824A1683C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D36DFB7-5311-4C05-BED1-1A9939E37218}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D36DFB7-5311-4C05-BED1-1A9939E37218}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D36DFB7-5311-4C05-BED1-1A9939E37218}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D36DFB7-5311-4C05-BED1-1A9939E37218}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC12427A-36E3-455F-9EDB-8F77BB69BE87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC12427A-36E3-455F-9EDB-8F77BB69BE87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC12427A-36E3-455F-9EDB-8F77BB69BE87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC12427A-36E3-455F-9EDB-8F77BB69BE87}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

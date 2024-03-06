@@ -24,8 +24,6 @@ namespace BookApp.Data.Models
 		[MaxLength(100)]
 		public string? Description { get; set; }
 
-		public string Picture { get; set; } = "Images/default_book.jpg";
-
 		public virtual ICollection<BookOrder> BookOrders { get; set; } = new HashSet<BookOrder>();
 	}
 }

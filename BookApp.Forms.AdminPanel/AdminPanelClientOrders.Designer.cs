@@ -228,11 +228,11 @@
 			label3.AutoSize = true;
 			label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
 			label3.ForeColor = Color.FromArgb(242, 235, 225);
-			label3.Location = new Point(56, 493);
+			label3.Location = new Point(50, 493);
 			label3.Name = "label3";
-			label3.Size = new Size(52, 20);
+			label3.Size = new Size(66, 20);
 			label3.TabIndex = 5;
-			label3.Text = "Книги";
+			label3.Text = "Каталог";
 			// 
 			// addBooksImageButton
 			// 
@@ -342,7 +342,7 @@
 			Margin = new Padding(3, 4, 3, 4);
 			Name = "AdminPanelClientOrders";
 			StartPosition = FormStartPosition.CenterScreen;
-			Text = "Login";
+			Text = "Orders";
 			panel1.ResumeLayout(false);
 			panel1.PerformLayout();
 			panel6.ResumeLayout(false);
