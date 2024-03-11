@@ -1,4 +1,5 @@
 using BookApp.Forms.Services;
+using BookApp.Forms.Services.LoginAndRegister;
 using System.Text.RegularExpressions;
 
 namespace BookApp.Forms.Login
@@ -35,7 +36,7 @@ namespace BookApp.Forms.Login
 			}
 		}
 
-		private bool ValidateFields(string firstName, string lastName, string email, string username, string password, DateTime birthday)
+		private static bool ValidateFields(string firstName, string lastName, string email, string username, string password, DateTime birthday)
 		{
 			//firstName
 			if (string.IsNullOrWhiteSpace(firstName))
@@ -86,6 +87,12 @@ namespace BookApp.Forms.Login
 				MessageBox.Show("Password is required", "Failed Validation", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 				return false;
 			}
+			else if (password.Length < 7)
+			{
+				MessageBox.Show("Password should be more than 7 symbols", "Failed Validation", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+				return false;
+			}
+
 
 			//birthday
 			if (!IsMinimumAgeValid(birthday, 13))
@@ -114,14 +121,14 @@ namespace BookApp.Forms.Login
 			return age >= minimumAge;
 		}
 
-		private bool IsValidEmail(string email)
+		private static bool IsValidEmail(string email)
 		{
 			var regex = new Regex(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$");
 
 			return regex.IsMatch(email);
 		}
 
-		private bool IsValidName(string name)
+		private static bool IsValidName(string name)
 		{
 			Regex regex = new Regex(@"^[a-zA-Z]+$");
 

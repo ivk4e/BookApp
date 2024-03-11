@@ -29,6 +29,11 @@
 		private void InitializeComponent()
 		{
 			panel1 = new Panel();
+			dataGridView1 = new DataGridView();
+			label15 = new Label();
+			button2 = new Button();
+			button1 = new Button();
+			textBox1 = new TextBox();
 			addBookButton = new Button();
 			label8 = new Label();
 			label14 = new Label();
@@ -61,6 +66,7 @@
 			titleForm = new Label();
 			pictureBox1 = new PictureBox();
 			panel1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
 			((System.ComponentModel.ISupportInitialize)authorImageBox).BeginInit();
 			((System.ComponentModel.ISupportInitialize)genreImageBox).BeginInit();
 			panel5.SuspendLayout();
@@ -75,6 +81,11 @@
 			// panel1
 			// 
 			panel1.BackColor = Color.FromArgb(241, 227, 203);
+			panel1.Controls.Add(dataGridView1);
+			panel1.Controls.Add(label15);
+			panel1.Controls.Add(button2);
+			panel1.Controls.Add(button1);
+			panel1.Controls.Add(textBox1);
 			panel1.Controls.Add(addBookButton);
 			panel1.Controls.Add(label8);
 			panel1.Controls.Add(label14);
@@ -99,6 +110,50 @@
 			panel1.Size = new Size(857, 557);
 			panel1.TabIndex = 0;
 			// 
+			// dataGridView1
+			// 
+			dataGridView1.AllowUserToAddRows = false;
+			dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			dataGridView1.Location = new Point(404, 103);
+			dataGridView1.Name = "dataGridView1";
+			dataGridView1.Size = new Size(442, 236);
+			dataGridView1.TabIndex = 49;
+			// 
+			// label15
+			// 
+			label15.AutoSize = true;
+			label15.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
+			label15.Location = new Point(404, 56);
+			label15.Name = "label15";
+			label15.Size = new Size(44, 15);
+			label15.TabIndex = 48;
+			label15.Text = "Автор";
+			// 
+			// button2
+			// 
+			button2.Location = new Point(597, 73);
+			button2.Name = "button2";
+			button2.Size = new Size(28, 23);
+			button2.TabIndex = 47;
+			button2.Text = "x";
+			button2.UseVisualStyleBackColor = true;
+			// 
+			// button1
+			// 
+			button1.Location = new Point(547, 73);
+			button1.Name = "button1";
+			button1.Size = new Size(49, 23);
+			button1.TabIndex = 46;
+			button1.Text = "Търси";
+			button1.UseVisualStyleBackColor = true;
+			// 
+			// textBox1
+			// 
+			textBox1.Location = new Point(404, 74);
+			textBox1.Name = "textBox1";
+			textBox1.Size = new Size(137, 23);
+			textBox1.TabIndex = 45;
+			// 
 			// addBookButton
 			// 
 			addBookButton.BackColor = Color.FromArgb(202, 81, 22);
@@ -108,13 +163,14 @@
 			addBookButton.FlatStyle = FlatStyle.Flat;
 			addBookButton.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			addBookButton.ForeColor = Color.White;
-			addBookButton.Location = new Point(165, 499);
+			addBookButton.Location = new Point(165, 493);
 			addBookButton.Name = "addBookButton";
 			addBookButton.Size = new Size(147, 32);
 			addBookButton.TabIndex = 43;
 			addBookButton.Text = "Добави книга";
 			addBookButton.UseMnemonic = false;
 			addBookButton.UseVisualStyleBackColor = false;
+			addBookButton.Click += addBookButton_Click;
 			// 
 			// label8
 			// 
@@ -142,7 +198,7 @@
 			label7.BackColor = Color.FromArgb(241, 227, 203);
 			label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
 			label7.ForeColor = Color.FromArgb(202, 81, 22);
-			label7.Location = new Point(615, 449);
+			label7.Location = new Point(538, 439);
 			label7.Name = "label7";
 			label7.Size = new Size(86, 15);
 			label7.TabIndex = 9;
@@ -162,8 +218,9 @@
 			// authorImageBox
 			// 
 			authorImageBox.BackgroundImageLayout = ImageLayout.Center;
+			authorImageBox.Cursor = Cursors.Hand;
 			authorImageBox.Image = Properties.Resources.editor;
-			authorImageBox.Location = new Point(624, 379);
+			authorImageBox.Location = new Point(547, 369);
 			authorImageBox.Name = "authorImageBox";
 			authorImageBox.Size = new Size(64, 65);
 			authorImageBox.TabIndex = 18;
@@ -209,7 +266,7 @@
 			titleBook.ForeColor = SystemColors.Desktop;
 			titleBook.Location = new Point(165, 60);
 			titleBook.Name = "titleBook";
-			titleBook.Size = new Size(653, 25);
+			titleBook.Size = new Size(220, 25);
 			titleBook.TabIndex = 31;
 			// 
 			// label10
@@ -231,7 +288,7 @@
 			authorsComboBox.FormattingEnabled = true;
 			authorsComboBox.Location = new Point(165, 119);
 			authorsComboBox.Name = "authorsComboBox";
-			authorsComboBox.Size = new Size(653, 25);
+			authorsComboBox.Size = new Size(220, 25);
 			authorsComboBox.TabIndex = 29;
 			// 
 			// label9
@@ -252,7 +309,7 @@
 			descriptionBox.ForeColor = SystemColors.WindowText;
 			descriptionBox.Location = new Point(165, 357);
 			descriptionBox.Name = "descriptionBox";
-			descriptionBox.Size = new Size(405, 126);
+			descriptionBox.Size = new Size(220, 126);
 			descriptionBox.TabIndex = 30;
 			descriptionBox.Text = "";
 			// 
@@ -262,7 +319,7 @@
 			label6.BackColor = Color.FromArgb(241, 227, 203);
 			label6.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
 			label6.ForeColor = Color.FromArgb(202, 81, 22);
-			label6.Location = new Point(724, 449);
+			label6.Location = new Point(647, 439);
 			label6.Name = "label6";
 			label6.Size = new Size(84, 15);
 			label6.TabIndex = 36;
@@ -276,18 +333,20 @@
 			genreComboBox.FormattingEnabled = true;
 			genreComboBox.Location = new Point(165, 177);
 			genreComboBox.Name = "genreComboBox";
-			genreComboBox.Size = new Size(653, 25);
+			genreComboBox.Size = new Size(220, 25);
 			genreComboBox.TabIndex = 32;
 			// 
 			// genreImageBox
 			// 
 			genreImageBox.BackgroundImageLayout = ImageLayout.Center;
+			genreImageBox.Cursor = Cursors.Hand;
 			genreImageBox.Image = Properties.Resources.book;
-			genreImageBox.Location = new Point(732, 384);
+			genreImageBox.Location = new Point(655, 374);
 			genreImageBox.Name = "genreImageBox";
 			genreImageBox.Size = new Size(64, 60);
 			genreImageBox.TabIndex = 35;
 			genreImageBox.TabStop = false;
+			genreImageBox.Click += genreImageBox_Click;
 			// 
 			// priceBox
 			// 
@@ -297,7 +356,7 @@
 			priceBox.ForeColor = SystemColors.Desktop;
 			priceBox.Location = new Point(165, 238);
 			priceBox.Name = "priceBox";
-			priceBox.Size = new Size(653, 25);
+			priceBox.Size = new Size(220, 25);
 			priceBox.TabIndex = 33;
 			// 
 			// quantityBox
@@ -308,7 +367,7 @@
 			quantityBox.ForeColor = SystemColors.Desktop;
 			quantityBox.Location = new Point(165, 299);
 			quantityBox.Name = "quantityBox";
-			quantityBox.Size = new Size(653, 25);
+			quantityBox.Size = new Size(220, 25);
 			quantityBox.TabIndex = 34;
 			// 
 			// panel5
@@ -327,7 +386,6 @@
 			panel5.Name = "panel5";
 			panel5.Size = new Size(139, 558);
 			panel5.TabIndex = 1;
-			panel5.Paint += panel5_Paint;
 			// 
 			// label4
 			// 
@@ -469,6 +527,7 @@
 			Text = "Books";
 			panel1.ResumeLayout(false);
 			panel1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
 			((System.ComponentModel.ISupportInitialize)authorImageBox).EndInit();
 			((System.ComponentModel.ISupportInitialize)genreImageBox).EndInit();
 			panel5.ResumeLayout(false);
@@ -520,6 +579,11 @@
 		private PictureBox genreImageBox;
 		private TextBox priceBox;
 		private TextBox quantityBox;
+		private Label label15;
+		private Button button2;
+		private Button button1;
+		private TextBox textBox1;
+		private DataGridView dataGridView1;
 	}
 }
 	

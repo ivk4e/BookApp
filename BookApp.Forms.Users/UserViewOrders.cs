@@ -1,4 +1,3 @@
-using BookApp.Forms.Login;
 using BookApp.Forms.Services;
 
 namespace BookApp.Forms.Users
@@ -27,7 +26,7 @@ namespace BookApp.Forms.Users
 
 		private void exit_Click(object sender, EventArgs e)
 		{
-			FormUtility.ShowNewForm<LoginForm>(this);
+			this.Close();
 		}
 	}
 }

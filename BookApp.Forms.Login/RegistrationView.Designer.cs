@@ -245,7 +245,7 @@
 			pictureBox2.TabStop = false;
 			pictureBox2.Click += pictureBox2_Click;
 			// 
-			// Registration
+			// RegistrationView
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
@@ -255,7 +255,7 @@
 			Controls.Add(panel2);
 			Controls.Add(panel1);
 			FormBorderStyle = FormBorderStyle.None;
-			Name = "Registration";
+			Name = "RegistrationView";
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "Registration";
 			panel1.ResumeLayout(false);

@@ -9,6 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BookApp.Forms.DTO\BookApp.Forms.DTO.csproj" />
     <ProjectReference Include="..\BookApp.Forms.Services\BookApp.Forms.Services.csproj" />
   </ItemGroup>
 

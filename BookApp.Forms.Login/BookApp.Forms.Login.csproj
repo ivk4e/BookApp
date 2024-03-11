@@ -12,6 +12,8 @@
     <ProjectReference Include="..\BookApp.Data\BookApp.Data.csproj" />
     <ProjectReference Include="..\BookApp.Forms.AdminPanel\BookApp.Forms.AdminPanel.csproj" />
     <ProjectReference Include="..\BookApp.Forms.Services\BookApp.Forms.Services.csproj" />
+    <ProjectReference Include="..\BookApp.Forms.Users\BookApp.Forms.Users.csproj" />
+    <ProjectReference Include="..\BookApp.Forms.Workers\BookApp.Forms.Workers.csproj" />
   </ItemGroup>
 
   <ItemGroup>

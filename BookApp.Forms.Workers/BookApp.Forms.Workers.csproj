@@ -10,7 +10,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BookApp.Forms.AdminPanel\BookApp.Forms.AdminPanel.csproj" />
-    <ProjectReference Include="..\BookApp.Forms.Login\BookApp.Forms.Login.csproj" />
   </ItemGroup>
 
   <ItemGroup>

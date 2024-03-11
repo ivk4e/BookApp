@@ -1,5 +1,8 @@
 using BookApp.Forms.AdminPanel;
 using BookApp.Forms.Services;
+using BookApp.Forms.Services.LoginAndRegister;
+using BookApp.Forms.Users;
+using BookApp.Forms.Workers;
 
 namespace BookApp.Forms.Login
 {
@@ -35,15 +38,17 @@ namespace BookApp.Forms.Login
 				if (userType == "admin")
 				{
 					MessageBox.Show("Successful login!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-					FormUtility.ShowNewForm<AdminPanelRules>(this);
+					FormUtility.ShowDialogAndHideCurrent<AdminPanelRules>(this);
 				}
 				else if (userType == "worker")
 				{
 					MessageBox.Show("Successful login!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					FormUtility.ShowDialogAndHideCurrent<WorkersViewOrders>(this);
 				}
 				else if (userType == "user")
 				{
 					MessageBox.Show("Successful login!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					FormUtility.ShowDialogAndHideCurrent<UserViewOrders>(this);
 				}
 				else
 				{

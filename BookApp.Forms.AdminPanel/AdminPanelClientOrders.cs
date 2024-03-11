@@ -26,7 +26,7 @@ namespace BookApp.Forms.AdminPanel
 
 		private void exit_Click_1(object sender, EventArgs e)
 		{
-			this.Dispose();
+			this.Close();
 		}
 	}
 }

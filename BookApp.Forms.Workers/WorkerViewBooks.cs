@@ -1,4 +1,3 @@
-using BookApp.Forms.Login;
 using BookApp.Forms.Services;
 
 namespace BookApp.Forms.Workers
@@ -22,12 +21,17 @@ namespace BookApp.Forms.Workers
 
 		private void exit_Click(object sender, EventArgs e)
 		{
-			FormUtility.ShowNewForm<LoginForm>(this);
+			this.Close();
 		}
 
 		private void usersPictureButton_Click(object sender, EventArgs e)
 		{
 			FormUtility.ShowNewForm<WorkersViewOrders>(this);
+		}
+
+		private void addBookButton_Click(object sender, EventArgs e)
+		{
+			FormUtility.ShowNewForm<WorkerAddBooks>(this);
 		}
 	}
 }

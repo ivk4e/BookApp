@@ -124,7 +124,7 @@
 			label9.AutoSize = true;
 			label9.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
 			label9.ForeColor = Color.FromArgb(242, 235, 225);
-			label9.Location = new Point(44, 484);
+			label9.Location = new Point(47, 490);
 			label9.Name = "label9";
 			label9.Size = new Size(43, 15);
 			label9.TabIndex = 7;
@@ -142,7 +142,7 @@
 			exit.BackgroundImageLayout = ImageLayout.Center;
 			exit.Cursor = Cursors.Hand;
 			exit.Image = Properties.Resources.log_out;
-			exit.Location = new Point(38, 416);
+			exit.Location = new Point(42, 420);
 			exit.Name = "exit";
 			exit.Size = new Size(75, 65);
 			exit.TabIndex = 6;
@@ -175,7 +175,7 @@
 			label2.AutoSize = true;
 			label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
 			label2.ForeColor = Color.FromArgb(242, 235, 225);
-			label2.Location = new Point(41, 238);
+			label2.Location = new Point(45, 240);
 			label2.Name = "label2";
 			label2.Size = new Size(51, 15);
 			label2.TabIndex = 3;
@@ -198,7 +198,7 @@
 			label1.AutoSize = true;
 			label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
 			label1.ForeColor = Color.FromArgb(242, 235, 225);
-			label1.Location = new Point(50, 117);
+			label1.Location = new Point(40, 117);
 			label1.Name = "label1";
 			label1.Size = new Size(59, 15);
 			label1.TabIndex = 1;
@@ -209,7 +209,7 @@
 			usersPictureButton.BackgroundImageLayout = ImageLayout.Center;
 			usersPictureButton.Cursor = Cursors.Hand;
 			usersPictureButton.Image = Properties.Resources.gear;
-			usersPictureButton.Location = new Point(38, 47);
+			usersPictureButton.Location = new Point(37, 47);
 			usersPictureButton.Name = "usersPictureButton";
 			usersPictureButton.Size = new Size(75, 67);
 			usersPictureButton.TabIndex = 0;
@@ -314,7 +314,6 @@
 
 		private Panel panel1;
 		private Panel panel2;
-		private Panel panel4;
 		private Panel panel5;
 		private PictureBox pictureBox1;
 		private PictureBox usersPictureButton;
