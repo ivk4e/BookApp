@@ -58,6 +58,7 @@ namespace BookApp.Forms.AdminPanel
 
 		private void button2_Click(object sender, EventArgs e)
 		{
+			textBox1.Text = "";
 			PopulateUsersListBox();
 		}
 
@@ -77,6 +78,7 @@ namespace BookApp.Forms.AdminPanel
 
 		private void button3_Click(object sender, EventArgs e)
 		{
+			textBox2.Text = "";
 			PopulateWorkersListBox();
 		}
 

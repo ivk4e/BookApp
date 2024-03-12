@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			components = new System.ComponentModel.Container();
 			panel1 = new Panel();
 			dataGridView1 = new DataGridView();
 			label15 = new Label();
@@ -65,6 +66,9 @@
 			panel2 = new Panel();
 			titleForm = new Label();
 			pictureBox1 = new PictureBox();
+			contextMenuStrip1 = new ContextMenuStrip(components);
+			updateToolStripMenuItem = new ToolStripMenuItem();
+			deleteToolStripMenuItem = new ToolStripMenuItem();
 			panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
 			((System.ComponentModel.ISupportInitialize)authorImageBox).BeginInit();
@@ -76,6 +80,7 @@
 			((System.ComponentModel.ISupportInitialize)usersPictureButton).BeginInit();
 			panel2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+			contextMenuStrip1.SuspendLayout();
 			SuspendLayout();
 			// 
 			// panel1
@@ -118,6 +123,7 @@
 			dataGridView1.Name = "dataGridView1";
 			dataGridView1.Size = new Size(442, 236);
 			dataGridView1.TabIndex = 49;
+			dataGridView1.CellMouseDown += dataGridView1_CellMouseDown;
 			// 
 			// label15
 			// 
@@ -137,6 +143,7 @@
 			button2.TabIndex = 47;
 			button2.Text = "x";
 			button2.UseVisualStyleBackColor = true;
+			button2.Click += button2_Click;
 			// 
 			// button1
 			// 
@@ -146,6 +153,7 @@
 			button1.TabIndex = 46;
 			button1.Text = "Търси";
 			button1.UseVisualStyleBackColor = true;
+			button1.Click += button1_Click;
 			// 
 			// textBox1
 			// 
@@ -511,6 +519,25 @@
 			pictureBox1.TabStop = false;
 			pictureBox1.Click += pictureBox1_Click;
 			// 
+			// contextMenuStrip1
+			// 
+			contextMenuStrip1.Items.AddRange(new ToolStripItem[] { updateToolStripMenuItem, deleteToolStripMenuItem });
+			contextMenuStrip1.Name = "contextMenuStrip1";
+			contextMenuStrip1.Size = new Size(138, 48);
+			// 
+			// updateToolStripMenuItem
+			// 
+			updateToolStripMenuItem.Name = "updateToolStripMenuItem";
+			updateToolStripMenuItem.Size = new Size(137, 22);
+			updateToolStripMenuItem.Text = "Редактирай";
+			// 
+			// deleteToolStripMenuItem
+			// 
+			deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+			deleteToolStripMenuItem.Size = new Size(137, 22);
+			deleteToolStripMenuItem.Text = "Изтрий";
+			deleteToolStripMenuItem.Click += deleteToolStripMenuItem_Click;
+			// 
 			// AdminPanelAddBook
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
@@ -539,6 +566,7 @@
 			panel2.ResumeLayout(false);
 			panel2.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+			contextMenuStrip1.ResumeLayout(false);
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -584,6 +612,9 @@
 		private Button button1;
 		private TextBox textBox1;
 		private DataGridView dataGridView1;
+		private ContextMenuStrip contextMenuStrip1;
+		private ToolStripMenuItem updateToolStripMenuItem;
+		private ToolStripMenuItem deleteToolStripMenuItem;
 	}
 }
 	
