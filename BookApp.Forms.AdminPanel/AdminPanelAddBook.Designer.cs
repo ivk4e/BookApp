@@ -121,6 +121,7 @@
 			dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			dataGridView1.Location = new Point(404, 103);
 			dataGridView1.Name = "dataGridView1";
+			dataGridView1.RowHeadersWidth = 51;
 			dataGridView1.Size = new Size(442, 236);
 			dataGridView1.TabIndex = 49;
 			dataGridView1.CellMouseDown += dataGridView1_CellMouseDown;
@@ -137,7 +138,7 @@
 			// 
 			// button2
 			// 
-			button2.Location = new Point(597, 73);
+			button2.Location = new Point(613, 73);
 			button2.Name = "button2";
 			button2.Size = new Size(28, 23);
 			button2.TabIndex = 47;
@@ -149,7 +150,7 @@
 			// 
 			button1.Location = new Point(547, 73);
 			button1.Name = "button1";
-			button1.Size = new Size(49, 23);
+			button1.Size = new Size(64, 23);
 			button1.TabIndex = 46;
 			button1.Text = "Търси";
 			button1.UseVisualStyleBackColor = true;
@@ -521,6 +522,7 @@
 			// 
 			// contextMenuStrip1
 			// 
+			contextMenuStrip1.ImageScalingSize = new Size(20, 20);
 			contextMenuStrip1.Items.AddRange(new ToolStripItem[] { updateToolStripMenuItem, deleteToolStripMenuItem });
 			contextMenuStrip1.Name = "contextMenuStrip1";
 			contextMenuStrip1.Size = new Size(138, 48);
@@ -530,6 +532,7 @@
 			updateToolStripMenuItem.Name = "updateToolStripMenuItem";
 			updateToolStripMenuItem.Size = new Size(137, 22);
 			updateToolStripMenuItem.Text = "Редактирай";
+			updateToolStripMenuItem.Click += updateToolStripMenuItem_Click;
 			// 
 			// deleteToolStripMenuItem
 			// 

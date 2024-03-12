@@ -13,8 +13,6 @@ namespace BookApp.Data.Models
 		public int StatusId { get; set; }
 		public StatusOrder StatusOrder { get; set; }
 
-		public decimal Amount { get; set; }
-
 		public DateTime DateOrder { get; set; }
 
 		public virtual ICollection<BookOrder> BookOrders { get; set; } = new HashSet<BookOrder>();

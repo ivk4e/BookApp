@@ -64,7 +64,7 @@ namespace BookApp.Forms.AdminPanel
 
 			var newBook = new BookUtilities();
 
-			if (!ValidateFields(title, authorId, genreId, price, quantity))
+			if (ValidateFields(title, authorId, genreId, price, quantity))
 			{
 				if (!description.IsNullOrEmpty())
 				{
@@ -122,8 +122,69 @@ namespace BookApp.Forms.AdminPanel
 				MessageBox.Show("Попълни име на автора!");
 				LoadBooks();
 			}
+			else
+			{
+				FilterAuthorsInDataGrid(authorName);
+			}
+		}
 
-			FilterAuthorsInDataGrid(authorName);
+		private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			DialogResult result = MessageBox.Show("Сигурен ли си, че искаш да изтриеш книгата?");
+
+			if (result == DialogResult.OK)
+			{
+				if (dataGridView1.SelectedRows.Count > 0)
+				{
+					DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
+
+					int bookId = Convert.ToInt32(selectedRow.Cells["BookId"].Value);
+
+					var deleteBook = new BookUtilities();
+
+					if (!deleteBook.DeleteBook(bookId))
+					{
+						MessageBox.Show("Книгата не беше изтрита!");
+					}
+					else
+					{
+						MessageBox.Show("Книгата беше изтрита!");
+					}
+				}
+			}
+
+			LoadBooks();
+		}
+
+		private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+		{
+			if (e.Button == MouseButtons.Right && e.RowIndex >= 0 && e.ColumnIndex >= 0)
+			{
+				dataGridView1.ClearSelection();
+				dataGridView1.Rows[e.RowIndex].Selected = true;
+				dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
+				contextMenuStrip1.Show(dataGridView1, e.Location);
+			}
+		}
+
+		private void updateToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (dataGridView1.CurrentRow != null)
+			{
+				int rowIndex = dataGridView1.CurrentRow.Index;
+
+				int id = Convert.ToInt32(dataGridView1.Rows[rowIndex].Cells["BookId"].Value);
+				string title = dataGridView1.Rows[rowIndex].Cells["Title"].Value.ToString();
+				string author = dataGridView1.Rows[rowIndex].Cells["Author"].Value.ToString();
+				decimal price = Convert.ToDecimal(dataGridView1.Rows[rowIndex].Cells["Price"].Value);
+
+				var updateBook = new BookUtilities();
+				
+				if (updateBook.UpdateBook(id, title, author, price)) 
+				{
+					MessageBox.Show("Успешна редакция!");
+				}
+			}
 		}
 
 		private void button2_Click(object sender, EventArgs e)
@@ -202,7 +263,14 @@ namespace BookApp.Forms.AdminPanel
 
 		private void LoadColumns()
 		{
-			dataGridView1.Columns.Add("BookId", "Id книга");
+			var idColumn = new DataGridViewTextBoxColumn
+			{
+				Name = "BookId",
+				HeaderText = "Id книга",
+				ReadOnly = true
+			};
+
+			dataGridView1.Columns.Add(idColumn);
 			dataGridView1.Columns.Add("Title", "Заглавие");
 			dataGridView1.Columns.Add("Author", "Автор");
 			dataGridView1.Columns.Add("Price", "Цена");
@@ -228,7 +296,9 @@ namespace BookApp.Forms.AdminPanel
 
 				foreach (var book in books)
 				{
-					dataGridView1.Rows.Add(book.BookId, book.Title, book.AuthorName, book.Price.ToString("0.00"));
+					string formattedPrice = book.Price.ToString("0.00") + " лв.";
+
+					dataGridView1.Rows.Add(book.BookId, book.Title, book.AuthorName, formattedPrice);
 				}
 			}
 			catch (Exception ex)
@@ -281,45 +351,6 @@ namespace BookApp.Forms.AdminPanel
 				{
 					row.Visible = false;
 				}
-			}
-		}
-
-		private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			DialogResult result = MessageBox.Show("Сигурен ли си, че искаш да изтриеш книгата?");
-
-			if (result == DialogResult.OK)
-			{
-				if (dataGridView1.SelectedRows.Count > 0)
-				{
-					DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
-
-					int bookId = Convert.ToInt32(selectedRow.Cells["BookId"].Value);
-
-					var deleteBook = new BookUtilities();
-
-					if (!deleteBook.DeleteBook(bookId))
-					{
-						MessageBox.Show("Книгата не беше изтрита!");
-					}
-					else
-					{
-						MessageBox.Show("Книгата беше изтрита!");
-					}
-				}
-			}
-
-			LoadBooks();
-		}
-
-		private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
-		{
-			if (e.Button == MouseButtons.Right && e.RowIndex >= 0 && e.ColumnIndex >= 0)
-			{
-				dataGridView1.ClearSelection();
-				dataGridView1.Rows[e.RowIndex].Selected = true;
-				dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
-				contextMenuStrip1.Show(dataGridView1, e.Location);
 			}
 		}
 	}

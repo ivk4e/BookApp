@@ -20,6 +20,13 @@ namespace BookApp.Forms.AdminPanel
 
 			PopulateUsersListBox();
 			PopulateWorkersListBox();
+
+			LoadOrders();
+		}
+
+		private void LoadOrders()
+		{
+			var orders = dbContext.Orders.ToList();
 		}
 
 		private void ordersImageButton_Click(object sender, EventArgs e)

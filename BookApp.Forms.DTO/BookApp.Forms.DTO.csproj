@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BookApp.Models\BookApp.Models.csproj" />
+  </ItemGroup>
+
 </Project>

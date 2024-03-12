@@ -1,8 +1,10 @@
 ﻿using BookApp.Data;
 using BookApp.Data.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -111,6 +113,40 @@ namespace BookApp.Forms.Services.Admin
 
 			MessageBox.Show("Книгата вече е била изтрита!");
 			return false;
+		}
+
+		public bool UpdateBook(int id, string title, string author, decimal price)
+		{
+			try
+			{
+				var book = dbContext.Books.FirstOrDefault(b => b.BookId == id);
+				var authorName = dbContext.Authors.FirstOrDefault(a => a.Name == author);
+
+				if (authorName == null)
+				{
+					MessageBox.Show("Не съществува такъв автор!");
+					return false;
+				}
+
+				if (book != null)
+				{
+					book.Title = title;
+					book.Author = authorName;
+					book.Price = price;
+
+					dbContext.SaveChanges();
+
+					return true;
+				}
+
+				return false;
+
+			}
+			catch (Exception)
+			{
+				return false;
+				throw;
+			}
 		}
 	}
 }
