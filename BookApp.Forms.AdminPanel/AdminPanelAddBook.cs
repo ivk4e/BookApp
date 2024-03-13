@@ -56,26 +56,23 @@ namespace BookApp.Forms.AdminPanel
 		private void addBookButton_Click(object sender, EventArgs e)
 		{
 			string title = titleBook.Text;
-			int authorId = int.Parse(authorsComboBox.SelectedValue.ToString());
-			int genreId = int.Parse(genreComboBox.SelectedValue.ToString());
-			decimal price = decimal.Parse(priceBox.Text);
-			int quantity = int.Parse(quantityBox.Text);
+			int authorId = 0, genreId = 0, quantity = 0;
+			decimal price = 0;
+			ValidateFields(title, ref authorId, ref genreId, ref quantity, ref price);
+
 			string description = descriptionBox.Text;
 
 			var newBook = new BookUtilities();
 
-			if (ValidateFields(title, authorId, genreId, price, quantity))
+			if (!description.IsNullOrEmpty())
 			{
-				if (!description.IsNullOrEmpty())
-				{
-					newBook.AddBook(title, authorId, genreId, price, quantity, description);
-					LoadBooks();
-				}
-				else
-				{
-					newBook.AddBook(title, authorId, genreId, price, quantity);
-					LoadBooks();
-				}
+				newBook.AddBook(title, authorId, genreId, price, quantity, description);
+				LoadBooks();
+			}
+			else
+			{
+				newBook.AddBook(title, authorId, genreId, price, quantity);
+				LoadBooks();
 			}
 		}
 
@@ -176,11 +173,22 @@ namespace BookApp.Forms.AdminPanel
 				int id = Convert.ToInt32(dataGridView1.Rows[rowIndex].Cells["BookId"].Value);
 				string title = dataGridView1.Rows[rowIndex].Cells["Title"].Value.ToString();
 				string author = dataGridView1.Rows[rowIndex].Cells["Author"].Value.ToString();
-				decimal price = Convert.ToDecimal(dataGridView1.Rows[rowIndex].Cells["Price"].Value);
+				string priceString = dataGridView1.Rows[rowIndex].Cells["Price"].Value.ToString();
+				
+				priceString = priceString.Replace("лв.", "").Trim();
+				if (decimal.TryParse(priceString, out decimal price))
+				{
+				}
+				else
+				{
+					MessageBox.Show("Invalid price format.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
+
+				int quantity = Convert.ToInt32(dataGridView1.Rows[rowIndex].Cells["BookQuantity"].Value);
 
 				var updateBook = new BookUtilities();
 				
-				if (updateBook.UpdateBook(id, title, author, price)) 
+				if (updateBook.UpdateBook(id, title, author, price, quantity)) 
 				{
 					MessageBox.Show("Успешна редакция!");
 				}
@@ -256,7 +264,7 @@ namespace BookApp.Forms.AdminPanel
 
 		private static bool IsValidName(string name)
 		{
-			Regex regex = new Regex(@"[A-Za-z]+");
+			Regex regex = new Regex(@"[A-Za-zА-Яа-я]+");
 
 			return regex.IsMatch(name);
 		}
@@ -274,6 +282,7 @@ namespace BookApp.Forms.AdminPanel
 			dataGridView1.Columns.Add("Title", "Заглавие");
 			dataGridView1.Columns.Add("Author", "Автор");
 			dataGridView1.Columns.Add("Price", "Цена");
+			dataGridView1.Columns.Add("BookQuantity", "Количество");
 		}
 
 		private void LoadBooks()
@@ -288,7 +297,8 @@ namespace BookApp.Forms.AdminPanel
 						BookId = b.BookId,
 						Title = b.Title,
 						AuthorName = b.Author.Name,
-						Price = b.Price
+						Price = b.Price,
+						BookQuantity = b.BookQuantity
 					})
 					.OrderBy(b => b.Title)
 					.ThenBy(b => b.Price)
@@ -298,43 +308,13 @@ namespace BookApp.Forms.AdminPanel
 				{
 					string formattedPrice = book.Price.ToString("0.00") + " лв.";
 
-					dataGridView1.Rows.Add(book.BookId, book.Title, book.AuthorName, formattedPrice);
+					dataGridView1.Rows.Add(book.BookId, book.Title, book.AuthorName, formattedPrice, book.BookQuantity);
 				}
 			}
 			catch (Exception ex)
 			{
 				MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
-		}
-
-		private bool ValidateFields(string title, int authorId, int genreId, decimal price, int quantity)
-		{
-			if (string.IsNullOrEmpty(title))
-			{
-				MessageBox.Show("Попълни заглавие на книгата!", "Failed Validation", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-				return false;
-			}
-			if (authorId == 0)
-			{
-				MessageBox.Show("Избери автор на книгата!", "Failed Validation", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-				return false;
-			}
-			if (genreId == 0)
-			{
-				MessageBox.Show("Избери жанр на книгата!", "Failed Validation", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-				return false;
-			}
-			if (price == 0.00M)
-			{
-				MessageBox.Show("Попълни цена на книгата!", "Failed Validation", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-				return false;
-			}
-			if (quantity == 0)
-			{
-				MessageBox.Show("Попълни количество на книгата!", "Failed Validation", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-				return false;
-			}
-			return true;
 		}
 
 		private void FilterAuthorsInDataGrid(string authorName)
@@ -351,6 +331,39 @@ namespace BookApp.Forms.AdminPanel
 				{
 					row.Visible = false;
 				}
+			}
+		}
+
+		private void ValidateFields(string title, ref int authorId, ref int genreId, ref int quantity, ref decimal price)
+		{
+			if (!IsValidName(title))
+			{
+				MessageBox.Show("Попълни правилно заглавието!", "Failed Validation", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+				return;
+			}
+
+			if (!int.TryParse(authorsComboBox.SelectedValue.ToString(), out authorId))
+			{
+				MessageBox.Show("Избери автор на книгата!", "Failed Validation", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+				return;
+			}
+
+			if (!int.TryParse(genreComboBox.SelectedValue.ToString(), out genreId))
+			{
+				MessageBox.Show("Избери жанр на книгата!", "Failed Validation", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+				return;
+			}
+
+			if (!decimal.TryParse(priceBox.Text, out price))
+			{
+				MessageBox.Show("Въведи правилна сума!", "Failed Validation", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+				return;
+			}
+
+			if (!int.TryParse(quantityBox.Text, out quantity))
+			{
+				MessageBox.Show("Попълни правилно количеството!", "Failed Validation", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+				return;
 			}
 		}
 	}

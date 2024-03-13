@@ -28,13 +28,13 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			components = new System.ComponentModel.Container();
 			panel1 = new Panel();
-			panel6 = new Panel();
-			checkBox4 = new CheckBox();
-			checkBox3 = new CheckBox();
-			checkBox2 = new CheckBox();
-			checkBox1 = new CheckBox();
-			label7 = new Label();
+			groupBox1 = new GroupBox();
+			pictureBox2 = new PictureBox();
+			radioButton1 = new RadioButton();
+			radioButton3 = new RadioButton();
+			radioButton2 = new RadioButton();
 			label6 = new Label();
 			dataGridView1 = new DataGridView();
 			label5 = new Label();
@@ -51,8 +51,10 @@
 			panel2 = new Panel();
 			titleForm = new Label();
 			pictureBox1 = new PictureBox();
+			contextMenuStrip1 = new ContextMenuStrip(components);
 			panel1.SuspendLayout();
-			panel6.SuspendLayout();
+			groupBox1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
 			((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
 			panel5.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)exit).BeginInit();
@@ -66,7 +68,7 @@
 			// panel1
 			// 
 			panel1.BackColor = Color.FromArgb(241, 227, 203);
-			panel1.Controls.Add(panel6);
+			panel1.Controls.Add(groupBox1);
 			panel1.Controls.Add(label6);
 			panel1.Controls.Add(dataGridView1);
 			panel1.Controls.Add(label5);
@@ -75,75 +77,75 @@
 			panel1.Size = new Size(857, 557);
 			panel1.TabIndex = 0;
 			// 
-			// panel6
+			// groupBox1
 			// 
-			panel6.BackColor = Color.White;
-			panel6.Controls.Add(checkBox4);
-			panel6.Controls.Add(checkBox3);
-			panel6.Controls.Add(checkBox2);
-			panel6.Controls.Add(checkBox1);
-			panel6.Controls.Add(label7);
-			panel6.Location = new Point(139, 28);
-			panel6.Name = "panel6";
-			panel6.Size = new Size(717, 39);
-			panel6.TabIndex = 7;
+			groupBox1.Controls.Add(pictureBox2);
+			groupBox1.Controls.Add(radioButton1);
+			groupBox1.Controls.Add(radioButton3);
+			groupBox1.Controls.Add(radioButton2);
+			groupBox1.FlatStyle = FlatStyle.Flat;
+			groupBox1.Location = new Point(396, 33);
+			groupBox1.Name = "groupBox1";
+			groupBox1.Size = new Size(430, 54);
+			groupBox1.TabIndex = 12;
+			groupBox1.TabStop = false;
 			// 
-			// checkBox4
+			// pictureBox2
 			// 
-			checkBox4.AutoSize = true;
-			checkBox4.Location = new Point(551, 10);
-			checkBox4.Name = "checkBox4";
-			checkBox4.Size = new Size(83, 19);
-			checkBox4.TabIndex = 12;
-			checkBox4.Text = "checkBox4";
-			checkBox4.UseVisualStyleBackColor = true;
+			pictureBox2.Cursor = Cursors.Hand;
+			pictureBox2.Image = Properties.Resources.x_circle_regular_24;
+			pictureBox2.InitialImage = Properties.Resources.x_circle_regular_24;
+			pictureBox2.Location = new Point(388, 15);
+			pictureBox2.Name = "pictureBox2";
+			pictureBox2.Size = new Size(36, 32);
+			pictureBox2.TabIndex = 11;
+			pictureBox2.TabStop = false;
+			pictureBox2.Click += pictureBox2_Click;
 			// 
-			// checkBox3
+			// radioButton1
 			// 
-			checkBox3.AutoSize = true;
-			checkBox3.Location = new Point(422, 10);
-			checkBox3.Name = "checkBox3";
-			checkBox3.Size = new Size(83, 19);
-			checkBox3.TabIndex = 11;
-			checkBox3.Text = "checkBox3";
-			checkBox3.UseVisualStyleBackColor = true;
+			radioButton1.AutoSize = true;
+			radioButton1.Location = new Point(6, 22);
+			radioButton1.Name = "radioButton1";
+			radioButton1.Size = new Size(148, 19);
+			radioButton1.TabIndex = 8;
+			radioButton1.TabStop = true;
+			radioButton1.Text = "Очаква потвърждение";
+			radioButton1.UseVisualStyleBackColor = true;
+			radioButton1.CheckedChanged += radioButton1_CheckedChanged;
 			// 
-			// checkBox2
+			// radioButton3
 			// 
-			checkBox2.AutoSize = true;
-			checkBox2.Location = new Point(299, 10);
-			checkBox2.Name = "checkBox2";
-			checkBox2.Size = new Size(83, 19);
-			checkBox2.TabIndex = 10;
-			checkBox2.Text = "checkBox2";
-			checkBox2.UseVisualStyleBackColor = true;
+			radioButton3.AutoSize = true;
+			radioButton3.Location = new Point(284, 22);
+			radioButton3.Name = "radioButton3";
+			radioButton3.Size = new Size(75, 19);
+			radioButton3.TabIndex = 10;
+			radioButton3.TabStop = true;
+			radioButton3.Text = "Отказана";
+			radioButton3.UseVisualStyleBackColor = true;
+			radioButton3.CheckedChanged += radioButton3_CheckedChanged;
 			// 
-			// checkBox1
+			// radioButton2
 			// 
-			checkBox1.AutoSize = true;
-			checkBox1.Location = new Point(172, 10);
-			checkBox1.Name = "checkBox1";
-			checkBox1.Size = new Size(83, 19);
-			checkBox1.TabIndex = 9;
-			checkBox1.Text = "checkBox1";
-			checkBox1.UseVisualStyleBackColor = true;
-			// 
-			// label7
-			// 
-			label7.AutoSize = true;
-			label7.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			label7.Location = new Point(29, 7);
-			label7.Name = "label7";
-			label7.Size = new Size(77, 25);
-			label7.TabIndex = 8;
-			label7.Text = "Филтър";
+			radioButton2.AutoSize = true;
+			radioButton2.ForeColor = SystemColors.ControlText;
+			radioButton2.ImageAlign = ContentAlignment.BottomRight;
+			radioButton2.Location = new Point(173, 22);
+			radioButton2.Name = "radioButton2";
+			radioButton2.Size = new Size(91, 19);
+			radioButton2.TabIndex = 9;
+			radioButton2.TabStop = true;
+			radioButton2.Text = "Потвърдена";
+			radioButton2.UseVisualStyleBackColor = true;
+			radioButton2.CheckedChanged += radioButton2_CheckedChanged;
 			// 
 			// label6
 			// 
 			label6.AutoSize = true;
 			label6.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
 			label6.ForeColor = Color.FromArgb(202, 81, 22);
-			label6.Location = new Point(168, 81);
+			label6.Location = new Point(171, 49);
 			label6.Name = "label6";
 			label6.Size = new Size(96, 25);
 			label6.TabIndex = 6;
@@ -151,12 +153,14 @@
 			// 
 			// dataGridView1
 			// 
+			dataGridView1.AllowUserToAddRows = false;
 			dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			dataGridView1.Location = new Point(168, 113);
+			dataGridView1.Location = new Point(171, 93);
 			dataGridView1.Name = "dataGridView1";
 			dataGridView1.RowHeadersWidth = 51;
-			dataGridView1.Size = new Size(662, 394);
+			dataGridView1.Size = new Size(655, 394);
 			dataGridView1.TabIndex = 5;
+			dataGridView1.CellMouseDown += dataGridView1_CellMouseDown;
 			// 
 			// label5
 			// 
@@ -299,9 +303,9 @@
 			titleForm.ForeColor = Color.FromArgb(88, 28, 12);
 			titleForm.Location = new Point(145, 8);
 			titleForm.Name = "titleForm";
-			titleForm.Size = new Size(150, 15);
+			titleForm.Size = new Size(203, 15);
 			titleForm.TabIndex = 3;
-			titleForm.Text = "Редактиране на поръчки";
+			titleForm.Text = "Редактиране на статус на поръчки";
 			// 
 			// pictureBox1
 			// 
@@ -314,6 +318,11 @@
 			pictureBox1.TabIndex = 0;
 			pictureBox1.TabStop = false;
 			pictureBox1.Click += pictureBox1_Click;
+			// 
+			// contextMenuStrip1
+			// 
+			contextMenuStrip1.Name = "contextMenuStrip1";
+			contextMenuStrip1.Size = new Size(61, 4);
 			// 
 			// AdminPanelClientOrders
 			// 
@@ -331,8 +340,9 @@
 			Text = "Orders";
 			panel1.ResumeLayout(false);
 			panel1.PerformLayout();
-			panel6.ResumeLayout(false);
-			panel6.PerformLayout();
+			groupBox1.ResumeLayout(false);
+			groupBox1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
 			((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
 			panel5.ResumeLayout(false);
 			panel5.PerformLayout();
@@ -366,14 +376,14 @@
 		private Label label5;
 		private DataGridView dataGridView1;
 		private Label label6;
-		private Panel panel6;
-		private CheckBox checkBox4;
-		private CheckBox checkBox3;
-		private CheckBox checkBox2;
-		private CheckBox checkBox1;
-		private Label label7;
 		private Label titleForm;
 		private Label label8;
+		private ContextMenuStrip contextMenuStrip1;
+		private RadioButton radioButton1;
+		private RadioButton radioButton3;
+		private RadioButton radioButton2;
+		private GroupBox groupBox1;
+		private PictureBox pictureBox2;
 	}
 }
 	

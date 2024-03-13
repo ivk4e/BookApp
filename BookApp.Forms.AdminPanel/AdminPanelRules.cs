@@ -3,6 +3,7 @@ using BookApp.Data;
 using BookApp.Data.Models;
 using BookApp.Forms.DTO;
 using BookApp.Forms.Services;
+using BookApp.Forms.Services.Admin;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.VisualBasic.ApplicationServices;
@@ -18,15 +19,9 @@ namespace BookApp.Forms.AdminPanel
 			InitializeComponent();
 			dbContext = new BookAppContext();
 
-			PopulateUsersListBox();
-			PopulateWorkersListBox();
+			LoadUsersListBox();
+			LoadWorkersListBox();
 
-			LoadOrders();
-		}
-
-		private void LoadOrders()
-		{
-			var orders = dbContext.Orders.ToList();
 		}
 
 		private void ordersImageButton_Click(object sender, EventArgs e)
@@ -51,6 +46,8 @@ namespace BookApp.Forms.AdminPanel
 
 		private void button1_Click(object sender, EventArgs e)
 		{
+			button2.Visible = true;
+
 			string email = textBox1.Text;
 
 			if (!email.IsNullOrEmpty())
@@ -66,11 +63,14 @@ namespace BookApp.Forms.AdminPanel
 		private void button2_Click(object sender, EventArgs e)
 		{
 			textBox1.Text = "";
-			PopulateUsersListBox();
+			LoadUsersListBox();
+			button2.Visible = false;
+
 		}
 
 		private void button4_Click(object sender, EventArgs e)
 		{
+			button3.Visible = true;
 			string email = textBox2.Text;
 
 			if (!email.IsNullOrEmpty())
@@ -86,7 +86,8 @@ namespace BookApp.Forms.AdminPanel
 		private void button3_Click(object sender, EventArgs e)
 		{
 			textBox2.Text = "";
-			PopulateWorkersListBox();
+			LoadWorkersListBox();
+			button3.Visible = false;
 		}
 
 		private void moveToSellersButton_Click(object sender, EventArgs e)
@@ -94,6 +95,7 @@ namespace BookApp.Forms.AdminPanel
 			if (listBox1.SelectedItem != null)
 			{
 				string selectedItem = listBox1.SelectedItem.ToString();
+				
 
 				DialogResult result = MessageBox.Show("Сигурен ли си, че искаш да преместиш потребителя към работниците?");
 
@@ -103,6 +105,7 @@ namespace BookApp.Forms.AdminPanel
 					listBox2.Items.Add(selectedItem);
 
 					UpdateUserStatus(selectedItem);
+					LoadWorkersListBox();
 				}
 			}
 			else
@@ -125,6 +128,7 @@ namespace BookApp.Forms.AdminPanel
 					listBox1.Items.Add(selectedItem);
 
 					UpdateUserStatus(selectedItem);
+					LoadUsersListBox();
 				}
 			}
 			else
@@ -152,7 +156,7 @@ namespace BookApp.Forms.AdminPanel
 
 			DeleteUser(selectedItem);
 			
-			PopulateUsersListBox();
+			LoadUsersListBox();
 		}
 
 		private void listBox2_MouseDown(object sender, MouseEventArgs e)
@@ -174,106 +178,38 @@ namespace BookApp.Forms.AdminPanel
 
 			DeleteUser(selectedItem);
 
-			PopulateWorkersListBox();
+			LoadWorkersListBox();
 		}
 
 		private void SearchWorkersByEmail(string email)
 		{
-			bool emailFound = false;
-
-			foreach (var item in listBox2.Items)
-			{
-				if (item.ToString().Contains(email))
-				{
-					emailFound = true;
-					listBox2.Items.Clear();
-					listBox2.Items.Add(item);
-					break;
-				}
-			}
-
-			if (!emailFound)
-			{
-				MessageBox.Show($"Не е намерен такъв email!");
-			}
+			ListBoxFilterUtility<string>.FilterItems(listBox2, email);
 		}
 
 		private void SearchUsersByEmail(string email)
 		{
-			bool emailFound = false;
-
-			foreach (var item in listBox1.Items)
-			{
-				if (item.ToString().Contains(email))
-				{
-					emailFound = true;
-					listBox1.Items.Clear();
-					listBox1.Items.Add(item);
-					break;
-				}
-			}
-
-			if (!emailFound)
-			{
-				MessageBox.Show($"Не е намерен такъв email!");
-			}
+			ListBoxFilterUtility<string>.FilterItems(listBox1, email);
 		}
 
-		private void PopulateWorkersListBox()
+		private void LoadWorkersListBox()
 		{
-			listBox2.Items.Clear();
+			var listBoxLoadUsers = new ListBoxLoader();
 
-			try
-			{
-				var users = dbContext.Users
-					.Where(u => u.UserTypeId == 2)
-					.Select(user => new UserDTO
-					{
-						FullName = user.FirstName + " " + user.LastName,
-						Email = user.Email
-					})
-					.OrderBy(u => u.FullName);
-
-				foreach (var user in users)
-				{
-					listBox2.Items.Add($"{user.FullName} - {user.Email}");
-				}
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-			}
+			static string userFormatter(Data.Models.User user) => $"{user.FirstName} {user.LastName} - {user.Email}";
+			listBoxLoadUsers.PopulateListBox(listBox2, 2, userFormatter);
 		}
 
-		private void PopulateUsersListBox()
+		private void LoadUsersListBox()
 		{
-			listBox1.Items.Clear();
+			var listBoxLoadUsers = new ListBoxLoader();
 
-			try
-			{
-				var users = dbContext.Users
-					.Where(u => u.UserTypeId == 3)
-					.Select(user => new UserDTO
-					{
-						FullName = user.FirstName + " " + user.LastName,
-						Email = user.Email
-					})
-					.OrderBy(u => u.FullName);
-
-				foreach (var user in users)
-				{
-					listBox1.Items.Add($"{user.FullName} - {user.Email}");
-				}
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-			}
+			static string userFormatter(Data.Models.User user) => $"{user.FirstName} {user.LastName} - {user.Email}";
+			listBoxLoadUsers.PopulateListBox(listBox1, 3, userFormatter);
 		}
 
 		private void UpdateUserStatus(string selectedItem)
 		{
-			string email = selectedItem.Substring(selectedItem.LastIndexOf('-') + 1).Trim();
+			string email = selectedItem[(selectedItem.LastIndexOf('-') + 1)..].Trim(); // selectedItem.Substring((selectedItem.LastIndexOf('-') + 1)).Trim(); 
 
 			var user = dbContext.Users.FirstOrDefault(u => u.Email == email);
 

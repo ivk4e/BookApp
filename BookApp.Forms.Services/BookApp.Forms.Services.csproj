@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BookApp.Data\BookApp.Data.csproj" />
+    <ProjectReference Include="..\BookApp.Forms.DTO\BookApp.Forms.DTO.csproj" />
     <ProjectReference Include="..\BookApp.Models\BookApp.Models.csproj" />
   </ItemGroup>
 

@@ -115,7 +115,7 @@ namespace BookApp.Forms.Services.Admin
 			return false;
 		}
 
-		public bool UpdateBook(int id, string title, string author, decimal price)
+		public bool UpdateBook(int id, string title, string author, decimal price, int quantity)
 		{
 			try
 			{
@@ -133,6 +133,7 @@ namespace BookApp.Forms.Services.Admin
 					book.Title = title;
 					book.Author = authorName;
 					book.Price = price;
+					book.BookQuantity = quantity;
 
 					dbContext.SaveChanges();
 

@@ -38,16 +38,22 @@ namespace BookApp.Forms.Login
 				if (userType == "admin")
 				{
 					MessageBox.Show("Successful login!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					textBox1.Text = "";
+					textBox2.Text = "";
 					FormUtility.ShowDialogAndHideCurrent<AdminPanelRules>(this);
 				}
 				else if (userType == "worker")
 				{
 					MessageBox.Show("Successful login!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					textBox1.Text = "";
+					textBox2.Text = "";
 					FormUtility.ShowDialogAndHideCurrent<WorkersViewOrders>(this);
 				}
 				else if (userType == "user")
 				{
 					MessageBox.Show("Successful login!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					textBox1.Text = "";
+					textBox2.Text = "";
 					FormUtility.ShowDialogAndHideCurrent<UserViewOrders>(this);
 				}
 				else

@@ -207,7 +207,7 @@
 			label7.BackColor = Color.FromArgb(241, 227, 203);
 			label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
 			label7.ForeColor = Color.FromArgb(202, 81, 22);
-			label7.Location = new Point(538, 439);
+			label7.Location = new Point(408, 415);
 			label7.Name = "label7";
 			label7.Size = new Size(86, 15);
 			label7.TabIndex = 9;
@@ -229,7 +229,7 @@
 			authorImageBox.BackgroundImageLayout = ImageLayout.Center;
 			authorImageBox.Cursor = Cursors.Hand;
 			authorImageBox.Image = Properties.Resources.editor;
-			authorImageBox.Location = new Point(547, 369);
+			authorImageBox.Location = new Point(417, 345);
 			authorImageBox.Name = "authorImageBox";
 			authorImageBox.Size = new Size(64, 65);
 			authorImageBox.TabIndex = 18;
@@ -269,7 +269,7 @@
 			// 
 			// titleBook
 			// 
-			titleBook.BackColor = Color.FromArgb(242, 235, 225);
+			titleBook.BackColor = Color.White;
 			titleBook.BorderStyle = BorderStyle.FixedSingle;
 			titleBook.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			titleBook.ForeColor = SystemColors.Desktop;
@@ -292,6 +292,7 @@
 			// authorsComboBox
 			// 
 			authorsComboBox.BackColor = Color.FromArgb(242, 235, 225);
+			authorsComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
 			authorsComboBox.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			authorsComboBox.ForeColor = Color.Black;
 			authorsComboBox.FormattingEnabled = true;
@@ -313,7 +314,7 @@
 			// 
 			// descriptionBox
 			// 
-			descriptionBox.BackColor = Color.FromArgb(242, 235, 225);
+			descriptionBox.BackColor = Color.White;
 			descriptionBox.BorderStyle = BorderStyle.FixedSingle;
 			descriptionBox.ForeColor = SystemColors.WindowText;
 			descriptionBox.Location = new Point(165, 357);
@@ -328,7 +329,7 @@
 			label6.BackColor = Color.FromArgb(241, 227, 203);
 			label6.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
 			label6.ForeColor = Color.FromArgb(202, 81, 22);
-			label6.Location = new Point(647, 439);
+			label6.Location = new Point(517, 415);
 			label6.Name = "label6";
 			label6.Size = new Size(84, 15);
 			label6.TabIndex = 36;
@@ -337,6 +338,7 @@
 			// genreComboBox
 			// 
 			genreComboBox.BackColor = Color.FromArgb(242, 235, 225);
+			genreComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
 			genreComboBox.Font = new Font("Segoe UI", 9.75F);
 			genreComboBox.ForeColor = Color.Black;
 			genreComboBox.FormattingEnabled = true;
@@ -350,7 +352,7 @@
 			genreImageBox.BackgroundImageLayout = ImageLayout.Center;
 			genreImageBox.Cursor = Cursors.Hand;
 			genreImageBox.Image = Properties.Resources.book;
-			genreImageBox.Location = new Point(655, 374);
+			genreImageBox.Location = new Point(525, 350);
 			genreImageBox.Name = "genreImageBox";
 			genreImageBox.Size = new Size(64, 60);
 			genreImageBox.TabIndex = 35;
@@ -359,7 +361,7 @@
 			// 
 			// priceBox
 			// 
-			priceBox.BackColor = Color.FromArgb(242, 235, 225);
+			priceBox.BackColor = Color.White;
 			priceBox.BorderStyle = BorderStyle.FixedSingle;
 			priceBox.Font = new Font("Segoe UI", 9.75F);
 			priceBox.ForeColor = SystemColors.Desktop;
@@ -370,7 +372,7 @@
 			// 
 			// quantityBox
 			// 
-			quantityBox.BackColor = Color.FromArgb(242, 235, 225);
+			quantityBox.BackColor = Color.White;
 			quantityBox.BorderStyle = BorderStyle.FixedSingle;
 			quantityBox.Font = new Font("Segoe UI", 9.75F);
 			quantityBox.ForeColor = SystemColors.Desktop;

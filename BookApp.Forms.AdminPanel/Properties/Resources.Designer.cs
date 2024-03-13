@@ -133,6 +133,26 @@ namespace BookApp.Forms.AdminPanel.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap save_solid_24 {
+            get {
+                object obj = ResourceManager.GetObject("save-solid-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap x_circle_regular_24 {
+            get {
+                object obj = ResourceManager.GetObject("x-circle-regular-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap x_regular_24 {
             get {
                 object obj = ResourceManager.GetObject("x-regular-24", resourceCulture);

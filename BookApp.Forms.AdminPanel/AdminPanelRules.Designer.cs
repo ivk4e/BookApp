@@ -131,6 +131,7 @@
 			button3.TabIndex = 13;
 			button3.Text = "x";
 			button3.UseVisualStyleBackColor = true;
+			button3.Visible = false;
 			button3.Click += button3_Click;
 			// 
 			// button4
@@ -158,6 +159,7 @@
 			button2.TabIndex = 10;
 			button2.Text = "x";
 			button2.UseVisualStyleBackColor = true;
+			button2.Visible = false;
 			button2.Click += button2_Click;
 			// 
 			// button1
