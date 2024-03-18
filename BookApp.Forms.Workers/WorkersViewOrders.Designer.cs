@@ -28,9 +28,16 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WorkersViewOrders));
 			panel1 = new Panel();
-			label8 = new Label();
+			groupBox1 = new GroupBox();
+			pictureBox4 = new PictureBox();
+			radioButton1 = new RadioButton();
+			radioButton3 = new RadioButton();
+			radioButton2 = new RadioButton();
 			label6 = new Label();
+			dataGridView1 = new DataGridView();
+			label8 = new Label();
 			label5 = new Label();
 			panel5 = new Panel();
 			label9 = new Label();
@@ -49,6 +56,9 @@
 			closeWindowButton = new PictureBox();
 			pictureBox1 = new PictureBox();
 			panel1.SuspendLayout();
+			groupBox1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
+			((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
 			panel5.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)exit).BeginInit();
 			((System.ComponentModel.ISupportInitialize)addBooksImageButton).BeginInit();
@@ -64,13 +74,100 @@
 			// panel1
 			// 
 			panel1.BackColor = Color.FromArgb(241, 227, 203);
-			panel1.Controls.Add(label8);
+			panel1.Controls.Add(groupBox1);
 			panel1.Controls.Add(label6);
+			panel1.Controls.Add(dataGridView1);
+			panel1.Controls.Add(label8);
 			panel1.Controls.Add(label5);
 			panel1.Location = new Point(1, 2);
 			panel1.Name = "panel1";
 			panel1.Size = new Size(857, 557);
 			panel1.TabIndex = 0;
+			// 
+			// groupBox1
+			// 
+			groupBox1.Controls.Add(pictureBox4);
+			groupBox1.Controls.Add(radioButton1);
+			groupBox1.Controls.Add(radioButton3);
+			groupBox1.Controls.Add(radioButton2);
+			groupBox1.FlatStyle = FlatStyle.Flat;
+			groupBox1.Location = new Point(394, 36);
+			groupBox1.Name = "groupBox1";
+			groupBox1.Size = new Size(430, 54);
+			groupBox1.TabIndex = 15;
+			groupBox1.TabStop = false;
+			// 
+			// pictureBox4
+			// 
+			pictureBox4.Cursor = Cursors.Hand;
+			pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
+			pictureBox4.InitialImage = (Image)resources.GetObject("pictureBox4.InitialImage");
+			pictureBox4.Location = new Point(388, 15);
+			pictureBox4.Name = "pictureBox4";
+			pictureBox4.Size = new Size(36, 32);
+			pictureBox4.TabIndex = 11;
+			pictureBox4.TabStop = false;
+			pictureBox4.Click += pictureBox4_Click_1;
+			// 
+			// radioButton1
+			// 
+			radioButton1.AutoSize = true;
+			radioButton1.Location = new Point(6, 22);
+			radioButton1.Name = "radioButton1";
+			radioButton1.Size = new Size(148, 19);
+			radioButton1.TabIndex = 8;
+			radioButton1.TabStop = true;
+			radioButton1.Text = "Очаква потвърждение";
+			radioButton1.UseVisualStyleBackColor = true;
+			radioButton1.CheckedChanged += radioButton1_CheckedChanged;
+			// 
+			// radioButton3
+			// 
+			radioButton3.AutoSize = true;
+			radioButton3.Location = new Point(284, 22);
+			radioButton3.Name = "radioButton3";
+			radioButton3.Size = new Size(75, 19);
+			radioButton3.TabIndex = 10;
+			radioButton3.TabStop = true;
+			radioButton3.Text = "Отказана";
+			radioButton3.UseVisualStyleBackColor = true;
+			radioButton3.CheckedChanged += radioButton3_CheckedChanged_1;
+			// 
+			// radioButton2
+			// 
+			radioButton2.AutoSize = true;
+			radioButton2.ForeColor = SystemColors.ControlText;
+			radioButton2.ImageAlign = ContentAlignment.BottomRight;
+			radioButton2.Location = new Point(173, 22);
+			radioButton2.Name = "radioButton2";
+			radioButton2.Size = new Size(91, 19);
+			radioButton2.TabIndex = 9;
+			radioButton2.TabStop = true;
+			radioButton2.Text = "Потвърдена";
+			radioButton2.UseVisualStyleBackColor = true;
+			radioButton2.CheckedChanged += radioButton2_CheckedChanged_1;
+			// 
+			// label6
+			// 
+			label6.AutoSize = true;
+			label6.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+			label6.ForeColor = Color.FromArgb(202, 81, 22);
+			label6.Location = new Point(169, 52);
+			label6.Name = "label6";
+			label6.Size = new Size(96, 25);
+			label6.TabIndex = 14;
+			label6.Text = "Поръчки";
+			// 
+			// dataGridView1
+			// 
+			dataGridView1.AllowUserToAddRows = false;
+			dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			dataGridView1.Location = new Point(169, 96);
+			dataGridView1.Name = "dataGridView1";
+			dataGridView1.RowHeadersWidth = 51;
+			dataGridView1.Size = new Size(655, 394);
+			dataGridView1.TabIndex = 13;
+			dataGridView1.CellMouseDown += dataGridView1_CellMouseDown;
 			// 
 			// label8
 			// 
@@ -80,17 +177,6 @@
 			label8.Size = new Size(38, 15);
 			label8.TabIndex = 7;
 			label8.Text = "label8";
-			// 
-			// label6
-			// 
-			label6.AutoSize = true;
-			label6.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-			label6.ForeColor = Color.FromArgb(202, 81, 22);
-			label6.Location = new Point(154, 39);
-			label6.Name = "label6";
-			label6.Size = new Size(96, 25);
-			label6.TabIndex = 5;
-			label6.Text = "Поръчки";
 			// 
 			// label5
 			// 
@@ -294,6 +380,10 @@
 			Text = "Orders";
 			panel1.ResumeLayout(false);
 			panel1.PerformLayout();
+			groupBox1.ResumeLayout(false);
+			groupBox1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
+			((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
 			panel5.ResumeLayout(false);
 			panel5.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)exit).EndInit();
@@ -325,7 +415,6 @@
 		private PictureBox addBooksImageButton;
 		private PictureBox exit;
 		private Label label4;
-		private Label label6;
 		private Label label5;
 		private PictureBox closeWindowButton;
 		private Label label8;
@@ -333,6 +422,13 @@
 		private Label label9;
 		private PictureBox pictureBox2;
 		private PictureBox pictureBox3;
+		private GroupBox groupBox1;
+		private PictureBox pictureBox4;
+		private RadioButton radioButton1;
+		private RadioButton radioButton3;
+		private RadioButton radioButton2;
+		private Label label6;
+		private DataGridView dataGridView1;
 	}
 }
 	

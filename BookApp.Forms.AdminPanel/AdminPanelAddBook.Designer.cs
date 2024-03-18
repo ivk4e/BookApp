@@ -527,19 +527,19 @@
 			contextMenuStrip1.ImageScalingSize = new Size(20, 20);
 			contextMenuStrip1.Items.AddRange(new ToolStripItem[] { updateToolStripMenuItem, deleteToolStripMenuItem });
 			contextMenuStrip1.Name = "contextMenuStrip1";
-			contextMenuStrip1.Size = new Size(138, 48);
+			contextMenuStrip1.Size = new Size(181, 70);
 			// 
 			// updateToolStripMenuItem
 			// 
 			updateToolStripMenuItem.Name = "updateToolStripMenuItem";
-			updateToolStripMenuItem.Size = new Size(137, 22);
-			updateToolStripMenuItem.Text = "Редактирай";
+			updateToolStripMenuItem.Size = new Size(180, 22);
+			updateToolStripMenuItem.Text = "Запиши промени";
 			updateToolStripMenuItem.Click += updateToolStripMenuItem_Click;
 			// 
 			// deleteToolStripMenuItem
 			// 
 			deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-			deleteToolStripMenuItem.Size = new Size(137, 22);
+			deleteToolStripMenuItem.Size = new Size(180, 22);
 			deleteToolStripMenuItem.Text = "Изтрий";
 			deleteToolStripMenuItem.Click += deleteToolStripMenuItem_Click;
 			// 

@@ -8,17 +8,19 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace BookApp.Forms.AdminPanel
 {
-	public partial class AdminPanelClientOrders : Form
+    public partial class AdminPanelClientOrders : Form
 	{
 		private BookAppContext dbContext;
+		private OrdersUtility ordersUtility;
 
 		public AdminPanelClientOrders()
 		{
 			InitializeComponent();
 			dbContext = new BookAppContext();
+			ordersUtility = new OrdersUtility(dbContext);
 
-			LoadColumns();
-			LoadOrders();
+			DataGridViewUtility.GenerateColumnsForOrdersDataGridView(dataGridView1);
+			ordersUtility.GetOrdersFromDatabase(dataGridView1);
 		}
 
 		private void pictureBox1_Click(object sender, EventArgs e)
@@ -45,11 +47,12 @@ namespace BookApp.Forms.AdminPanel
 		{
 			if (radioButton1.Checked)
 			{
-				FilterOrdersByStatus(1);
+				var filteredOrders = ordersUtility.FilterOrdersByStatus(1);
+				DataGridViewUtility.LoadFilterOrdersToDataGridView(dataGridView1, filteredOrders);
 			}
 			else
 			{
-				LoadOrders();
+				ordersUtility.GetOrdersFromDatabase(dataGridView1);
 			}
 		}
 
@@ -57,11 +60,12 @@ namespace BookApp.Forms.AdminPanel
 		{
 			if (radioButton2.Checked)
 			{
-				FilterOrdersByStatus(2);
+				var filteredOrders = ordersUtility.FilterOrdersByStatus(2);
+				DataGridViewUtility.LoadFilterOrdersToDataGridView(dataGridView1, filteredOrders);
 			}
 			else
 			{
-				LoadOrders();
+				ordersUtility.GetOrdersFromDatabase(dataGridView1);
 			}
 		}
 
@@ -69,11 +73,12 @@ namespace BookApp.Forms.AdminPanel
 		{
 			if (radioButton3.Checked)
 			{
-				FilterOrdersByStatus(3);
+				var filteredOrders = ordersUtility.FilterOrdersByStatus(3);
+				DataGridViewUtility.LoadFilterOrdersToDataGridView(dataGridView1, filteredOrders);
 			}
 			else
 			{
-				LoadOrders();
+				ordersUtility.GetOrdersFromDatabase(dataGridView1);
 			}
 		}
 
@@ -107,27 +112,9 @@ namespace BookApp.Forms.AdminPanel
 			}
 		}
 
-		private void StatusMenuItem_Click(object sender, EventArgs e)
-		{
-			ToolStripMenuItem item = (ToolStripMenuItem)sender;
-			string status = item.Text;
-
-			int statusId = GetStatusId(status);
-			int rowIndex = dataGridView1.CurrentCell.RowIndex;
-			int orderId = Convert.ToInt32(dataGridView1.Rows[rowIndex].Cells["OrderId"].Value);
-
-			if (UpdateOrderStatus(orderId, statusId))
-			{
-				MessageBox.Show("Успешно сменен статус");
-				LoadOrders();
-				return;
-			}
-			MessageBox.Show("Неуспешно сменен статус");
-		}
-		
 		private void pictureBox2_Click(object sender, EventArgs e)
 		{
-			LoadOrders();
+			ordersUtility.GetOrdersFromDatabase(dataGridView1);
 			if (radioButton1.Checked)
 			{
 				radioButton1.Checked = false;
@@ -142,84 +129,22 @@ namespace BookApp.Forms.AdminPanel
 			}
 		}
 
-		private void FilterOrdersByStatus(int statusId)
+		private void StatusMenuItem_Click(object sender, EventArgs e)
 		{
-			var filteredOrders = dbContext.Orders
-			   .Where(o => o.StatusId == statusId)
-			   .Select(o => new OrdersDTO
-			   {
-				   OrderId = o.OrderId,
-				   CustomerName = o.User.FirstName + " " + o.User.LastName,
-				   DateOrder = o.DateOrder,
-				   BookOrder = string.Join(", ", o.BookOrders.Select(b =>
-					   $"{b.Book.Title}{(b.Quantity > 1 ? $" x{b.Quantity}" : "")}")),
-				   TotalPrice = o.BookOrders.Sum(b => b.Quantity * b.Book.Price),
-				   Status = o.StatusOrder.StatusName
-			   })
-			   .OrderBy(o => o.OrderId)
-			   .ThenBy(o => o.CustomerName)
-			   .ThenByDescending(o => o.Status)
-			   .ToList();
+			ToolStripMenuItem item = (ToolStripMenuItem)sender;
+			string status = item.Text;
 
-			DataGridViewHelper.LoadOrders(dataGridView1, filteredOrders);
-		}
+			int statusId = GetStatusId(status);
+			int rowIndex = dataGridView1.CurrentCell.RowIndex;
+			int orderId = Convert.ToInt32(dataGridView1.Rows[rowIndex].Cells["OrderId"].Value);
 
-		private void LoadColumns()
-		{
-			var idColumn = DataGridViewHelper.CreateTextBoxColumn("OrderId", "Id поръчка");
-			var customerColumn = DataGridViewHelper.CreateTextBoxColumn("CustomerName", "Клиент");
-			var bookColumn = DataGridViewHelper.CreateTextBoxColumn("BookOrder", "Поръчка");
-			var totalPrice = DataGridViewHelper.CreateTextBoxColumn("TotalPrice", "Сума");
-
-			dataGridView1.Columns.Add(idColumn);
-			dataGridView1.Columns.Add(customerColumn);
-			dataGridView1.Columns.Add("DateOrder", "Дата на поръчка");
-			dataGridView1.Columns.Add(bookColumn);
-			dataGridView1.Columns.Add(totalPrice);
-			dataGridView1.Columns.Add("Status", "Статус");
-		}
-
-		private void LoadOrders()
-		{
-			var orders = dbContext.Orders
-				.Select(o => new OrdersDTO
-				{
-					OrderId = o.OrderId,
-					CustomerName = o.User.FirstName + " " + o.User.LastName,
-					DateOrder = o.DateOrder,
-					BookOrder = string.Join(", ", o.BookOrders.Select(b =>
-						$"{b.Book.Title}{(b.Quantity > 1 ? $" ({b.Quantity} бр.)" : "")}")),
-					TotalPrice = o.BookOrders.Sum(b => b.Quantity * b.Book.Price),
-					Status = o.StatusOrder.StatusName
-				})
-				.OrderBy(o => o.OrderId)
-				.ThenBy(o => o.CustomerName)
-				.ThenByDescending(o => o.Status)
-				.ToList();
-
-			DataGridViewHelper.LoadOrders(dataGridView1, orders);
-		}
-
-		private bool UpdateOrderStatus(int orderId, int statusId)
-		{
-			try
+			if (ordersUtility.UpdateOrderStatus(orderId, statusId))
 			{
-				var order = dbContext.Orders.FirstOrDefault(o => o.OrderId == orderId);
-				if (order != null)
-				{
-					order.StatusId = statusId;
-					dbContext.SaveChanges();
-
-					return true;
-				}
-
-				return false;
+				MessageBox.Show("Успешно сменен статус");
+				ordersUtility.GetOrdersFromDatabase(dataGridView1);
+				return;
 			}
-			catch (Exception ex)
-			{
-				MessageBox.Show($"Error updating order status: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-				return false;
-			}
+			MessageBox.Show("Неуспешно сменен статус");
 		}
 
 		private int GetStatusId(string status)
@@ -236,7 +161,5 @@ namespace BookApp.Forms.AdminPanel
 					return -1;
 			}
 		}
-
-	
 	}
 }
