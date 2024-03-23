@@ -1,6 +1,8 @@
 ﻿using BookApp.Data;
+using BookApp.Data.Models;
 using BookApp.Forms.Services;
 using BookApp.Forms.Services.Admin;
+using BookApp.Forms.Services.LoginAndRegister;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.VisualBasic;
@@ -28,8 +30,11 @@ namespace BookApp.Forms.Workers
 
 			DataGridViewUtility.GenerateColumnsForBooksDataGridView(dataGridView1);
 			booksUtility.LoadBooksToDataGridView(dataGridView1);
+
+			LoadUserInfo();
 		}
 
+		
 		private void ordersImageButton_Click(object sender, EventArgs e)
 		{
 			FormUtility.ShowNewForm<WorkerViewBooks>(this);
@@ -199,6 +204,11 @@ namespace BookApp.Forms.Workers
 			}
 		}
 
+		private void pictureBox3_Click(object sender, EventArgs e)
+		{
+			FormUtility.ShowNewForm<WorkerViewUserOrders>(this);
+		}
+
 		private void ClearBoxes()
 		{
 			titleBook.Text = "";
@@ -212,6 +222,13 @@ namespace BookApp.Forms.Workers
 			Regex regex = new Regex(@"[A-Za-zА-Яа-я]+");
 
 			return regex.IsMatch(name);
+		}
+
+		private void LoadUserInfo()
+		{
+			User currentUser = SessionManager.GetCurrentUser();
+
+			titleForm.Text = currentUser.Username;
 		}
 
 		private void ValidateFields(string title, ref int authorId, ref int genreId, ref int quantity, ref decimal price)

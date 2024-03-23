@@ -324,6 +324,7 @@
 			pictureBox3.Size = new Size(24, 24);
 			pictureBox3.TabIndex = 8;
 			pictureBox3.TabStop = false;
+			pictureBox3.Click += pictureBox3_Click;
 			// 
 			// pictureBox2
 			// 

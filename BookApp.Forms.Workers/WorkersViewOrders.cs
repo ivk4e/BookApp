@@ -1,14 +1,16 @@
 ﻿using BookApp.Data;
+using BookApp.Data.Models;
 using BookApp.Forms.Services;
 using BookApp.Forms.Services.Admin;
+using BookApp.Forms.Services.LoginAndRegister;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookApp.Forms.Workers
 {
 	public partial class WorkersViewOrders : Form
 	{
-		private BookAppContext dbContext;
-		private OrdersUtility ordersUtility;
+		private readonly BookAppContext dbContext;
+		private readonly OrdersUtility ordersUtility;
 
 		public WorkersViewOrders()
 		{
@@ -18,6 +20,8 @@ namespace BookApp.Forms.Workers
 
 			DataGridViewUtility.GenerateColumnsForOrdersDataGridView(dataGridView1);
 			ordersUtility.GetOrdersFromDatabase(dataGridView1);
+
+			LoadUserInfo();
 		}
 
 		private void ordersImageButton_Click(object sender, EventArgs e)
@@ -28,6 +32,7 @@ namespace BookApp.Forms.Workers
 		private void pictureBox2_Click(object sender, EventArgs e)
 		{
 			this.Close();
+			SessionManager.ClearCurrentUser();
 		}
 
 		private void addBooksImageButton_Click(object sender, EventArgs e)
@@ -38,6 +43,7 @@ namespace BookApp.Forms.Workers
 		private void exit_Click(object sender, EventArgs e)
 		{
 			this.Close();
+			SessionManager.ClearCurrentUser();
 		}
 
 		private void radioButton1_CheckedChanged(object sender, EventArgs e)
@@ -159,5 +165,23 @@ namespace BookApp.Forms.Workers
 			}
 		}
 
+		private void LoadUserInfo()
+		{
+			User currentUser = SessionManager.GetCurrentUser();
+			if (currentUser != null)
+			{
+				string username = currentUser.Username;
+				titleForm.Text = username;
+			}
+			else
+			{
+				MessageBox.Show("No user logged in.");
+			}
+		}
+
+		private void pictureBox3_Click(object sender, EventArgs e)
+		{
+			FormUtility.ShowNewForm<WorkerViewUserOrders>(this);
+		}
 	}
 }

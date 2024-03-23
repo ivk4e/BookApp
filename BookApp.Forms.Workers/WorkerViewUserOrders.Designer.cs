@@ -1,6 +1,6 @@
-﻿namespace BookApp.Forms.Users
+﻿namespace BookApp.Forms.Workers
 {
-	partial class UserViewOrders
+	partial class WorkerViewUserOrders
 	{
 		/// <summary>
 		///  Required designer variable.
@@ -29,8 +29,10 @@
 		private void InitializeComponent()
 		{
 			panel1 = new Panel();
-			pictureBox3 = new PictureBox();
+			label7 = new Label();
+			dataGridView2 = new DataGridView();
 			label8 = new Label();
+			label6 = new Label();
 			label5 = new Label();
 			panel5 = new Panel();
 			label9 = new Label();
@@ -43,25 +45,23 @@
 			label1 = new Label();
 			usersPictureButton = new PictureBox();
 			panel2 = new Panel();
+			pictureBox3 = new PictureBox();
 			pictureBox2 = new PictureBox();
 			titleForm = new Label();
 			closeWindowButton = new PictureBox();
 			pictureBox1 = new PictureBox();
-			label7 = new Label();
-			dataGridView2 = new DataGridView();
-			label6 = new Label();
 			panel1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+			((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
 			panel5.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)exit).BeginInit();
 			((System.ComponentModel.ISupportInitialize)addBooksImageButton).BeginInit();
 			((System.ComponentModel.ISupportInitialize)ordersImageButton).BeginInit();
 			((System.ComponentModel.ISupportInitialize)usersPictureButton).BeginInit();
 			panel2.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
 			((System.ComponentModel.ISupportInitialize)closeWindowButton).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-			((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
 			SuspendLayout();
 			// 
 			// panel1
@@ -69,23 +69,32 @@
 			panel1.BackColor = Color.FromArgb(241, 227, 203);
 			panel1.Controls.Add(label7);
 			panel1.Controls.Add(dataGridView2);
-			panel1.Controls.Add(label6);
-			panel1.Controls.Add(pictureBox3);
 			panel1.Controls.Add(label8);
+			panel1.Controls.Add(label6);
 			panel1.Controls.Add(label5);
 			panel1.Location = new Point(1, 2);
 			panel1.Name = "panel1";
 			panel1.Size = new Size(857, 557);
 			panel1.TabIndex = 0;
 			// 
-			// pictureBox3
+			// label7
 			// 
-			pictureBox3.Image = Properties.Resources.shopping_cart;
-			pictureBox3.Location = new Point(234, 3);
-			pictureBox3.Name = "pictureBox3";
-			pictureBox3.Size = new Size(24, 24);
-			pictureBox3.TabIndex = 2;
-			pictureBox3.TabStop = false;
+			label7.AutoSize = true;
+			label7.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
+			label7.Location = new Point(162, 86);
+			label7.Name = "label7";
+			label7.Size = new Size(196, 15);
+			label7.TabIndex = 32;
+			label7.Text = "До момента не си купувал нищо...";
+			label7.Visible = false;
+			// 
+			// dataGridView2
+			// 
+			dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			dataGridView2.Location = new Point(202, 86);
+			dataGridView2.Name = "dataGridView2";
+			dataGridView2.Size = new Size(603, 355);
+			dataGridView2.TabIndex = 31;
 			// 
 			// label8
 			// 
@@ -95,6 +104,17 @@
 			label8.Size = new Size(38, 15);
 			label8.TabIndex = 7;
 			label8.Text = "label8";
+			// 
+			// label6
+			// 
+			label6.AutoSize = true;
+			label6.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+			label6.ForeColor = Color.FromArgb(202, 81, 22);
+			label6.Location = new Point(154, 39);
+			label6.Name = "label6";
+			label6.Size = new Size(161, 25);
+			label6.TabIndex = 5;
+			label6.Text = "Твоите покупки";
 			// 
 			// label5
 			// 
@@ -213,16 +233,19 @@
 			// usersPictureButton
 			// 
 			usersPictureButton.BackgroundImageLayout = ImageLayout.Center;
+			usersPictureButton.Cursor = Cursors.Hand;
 			usersPictureButton.Image = Properties.Resources.gear;
 			usersPictureButton.Location = new Point(37, 47);
 			usersPictureButton.Name = "usersPictureButton";
 			usersPictureButton.Size = new Size(75, 67);
 			usersPictureButton.TabIndex = 0;
 			usersPictureButton.TabStop = false;
+			usersPictureButton.Click += usersPictureButton_Click;
 			// 
 			// panel2
 			// 
 			panel2.BackColor = Color.FromArgb(249, 179, 132);
+			panel2.Controls.Add(pictureBox3);
 			panel2.Controls.Add(pictureBox2);
 			panel2.Controls.Add(titleForm);
 			panel2.Controls.Add(closeWindowButton);
@@ -231,6 +254,16 @@
 			panel2.Name = "panel2";
 			panel2.Size = new Size(857, 30);
 			panel2.TabIndex = 0;
+			// 
+			// pictureBox3
+			// 
+			pictureBox3.Cursor = Cursors.Hand;
+			pictureBox3.Image = Properties.Resources.shopping_cart;
+			pictureBox3.Location = new Point(234, 3);
+			pictureBox3.Name = "pictureBox3";
+			pictureBox3.Size = new Size(24, 24);
+			pictureBox3.TabIndex = 5;
+			pictureBox3.TabStop = false;
 			// 
 			// pictureBox2
 			// 
@@ -271,37 +304,7 @@
 			pictureBox1.TabIndex = 0;
 			pictureBox1.TabStop = false;
 			// 
-			// label7
-			// 
-			label7.AutoSize = true;
-			label7.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
-			label7.Location = new Point(161, 93);
-			label7.Name = "label7";
-			label7.Size = new Size(196, 15);
-			label7.TabIndex = 35;
-			label7.Text = "До момента не си купувал нищо...";
-			label7.Visible = false;
-			// 
-			// dataGridView2
-			// 
-			dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			dataGridView2.Location = new Point(201, 93);
-			dataGridView2.Name = "dataGridView2";
-			dataGridView2.Size = new Size(603, 355);
-			dataGridView2.TabIndex = 34;
-			// 
-			// label6
-			// 
-			label6.AutoSize = true;
-			label6.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-			label6.ForeColor = Color.FromArgb(202, 81, 22);
-			label6.Location = new Point(153, 46);
-			label6.Name = "label6";
-			label6.Size = new Size(161, 25);
-			label6.TabIndex = 33;
-			label6.Text = "Твоите покупки";
-			// 
-			// UserViewOrders
+			// WorkerViewCart
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
@@ -312,12 +315,12 @@
 			Controls.Add(panel2);
 			Controls.Add(panel1);
 			FormBorderStyle = FormBorderStyle.None;
-			Name = "UserViewOrders";
+			Name = "WorkerViewCart";
 			StartPosition = FormStartPosition.CenterScreen;
-			Text = "Orders";
+			Text = "Books";
 			panel1.ResumeLayout(false);
 			panel1.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+			((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
 			panel5.ResumeLayout(false);
 			panel5.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)exit).EndInit();
@@ -326,10 +329,10 @@
 			((System.ComponentModel.ISupportInitialize)usersPictureButton).EndInit();
 			panel2.ResumeLayout(false);
 			panel2.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
 			((System.ComponentModel.ISupportInitialize)closeWindowButton).EndInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-			((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -348,6 +351,7 @@
 		private PictureBox addBooksImageButton;
 		private PictureBox exit;
 		private Label label4;
+		private Label label6;
 		private Label label5;
 		private PictureBox closeWindowButton;
 		private Label label8;
@@ -355,9 +359,8 @@
 		private Label label9;
 		private PictureBox pictureBox2;
 		private PictureBox pictureBox3;
-		private Label label7;
 		private DataGridView dataGridView2;
-		private Label label6;
+		private Label label7;
 	}
 }
 	

@@ -21,6 +21,9 @@
     <Compile Update="WorkerAddBooks.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="WorkerViewUserOrders.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="WorkerViewBooks.cs">
       <SubType>Form</SubType>
     </Compile>

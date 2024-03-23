@@ -3,7 +3,7 @@ using System.Text;
 
 namespace BookApp.Forms.Services.LoginAndRegister
 {
-    public class HashPassword
+    public static class HashPassword
     {
         public static string SetPassword(string password)
         {

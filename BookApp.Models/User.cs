@@ -16,7 +16,7 @@ namespace BookApp.Data.Models
 		[EmailAddress]
 		public string Email { get; set; } = "";
 
-		[MaxLength(10)]
+		[MaxLength(50)]
 		public string Username { get; set; }
 
 		[MaxLength(20)]

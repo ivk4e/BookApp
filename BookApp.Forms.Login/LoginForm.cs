@@ -1,16 +1,20 @@
+using BookApp.Data.Models;
 using BookApp.Forms.AdminPanel;
 using BookApp.Forms.Services;
 using BookApp.Forms.Services.LoginAndRegister;
 using BookApp.Forms.Users;
 using BookApp.Forms.Workers;
+using Microsoft.VisualBasic.ApplicationServices;
 
 namespace BookApp.Forms.Login
 {
 	public partial class LoginForm : Form
 	{
+
 		public LoginForm()
 		{
 			InitializeComponent();
+			textBox2.PasswordChar = '*';
 		}
 
 		private void pictureBox2_Click(object sender, EventArgs e)
@@ -32,29 +36,26 @@ namespace BookApp.Forms.Login
 
 			if (userLogin.AuthenticateUser(username, password))
 			{
-
+				var user = userLogin.GetUserInfo(username);
 				string userType = userLogin.AuthenticateUserType(username);
 
 				if (userType == "admin")
 				{
-					MessageBox.Show("Successful login!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-					textBox1.Text = "";
-					textBox2.Text = "";
+					ShowMessage(user);
 					FormUtility.ShowDialogAndHideCurrent<AdminPanelRules>(this);
+					CleanTextBoxes();
 				}
 				else if (userType == "worker")
 				{
-					MessageBox.Show("Successful login!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-					textBox1.Text = "";
-					textBox2.Text = "";
+					ShowMessage(user);
 					FormUtility.ShowDialogAndHideCurrent<WorkersViewOrders>(this);
+					CleanTextBoxes();
 				}
 				else if (userType == "user")
 				{
-					MessageBox.Show("Successful login!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-					textBox1.Text = "";
-					textBox2.Text = "";
+					ShowMessage(user);
 					FormUtility.ShowDialogAndHideCurrent<UserViewOrders>(this);
+					CleanTextBoxes();
 				}
 				else
 				{
@@ -66,6 +67,18 @@ namespace BookApp.Forms.Login
 			{
 				MessageBox.Show("Incorrect username or password", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
+		}
+
+		private void CleanTextBoxes()
+		{
+			textBox1.Text = "";
+			textBox2.Text = "";
+		}
+
+		private static void ShowMessage(Data.Models.User user)
+		{
+			UserLogin.SetCurrentUser(user);
+			MessageBox.Show("Successful login!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
 	}
 }

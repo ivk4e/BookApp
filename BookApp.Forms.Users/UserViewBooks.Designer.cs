@@ -28,7 +28,17 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			components = new System.ComponentModel.Container();
 			panel1 = new Panel();
+			label7 = new Label();
+			button1 = new Button();
+			button2 = new Button();
+			textBox1 = new TextBox();
+			label11 = new Label();
+			button3 = new Button();
+			button4 = new Button();
+			textBox2 = new TextBox();
+			dataGridView1 = new DataGridView();
 			label8 = new Label();
 			label6 = new Label();
 			label5 = new Label();
@@ -43,27 +53,38 @@
 			label1 = new Label();
 			usersPictureButton = new PictureBox();
 			panel2 = new Panel();
-			pictureBox3 = new PictureBox();
 			pictureBox2 = new PictureBox();
 			titleForm = new Label();
 			closeWindowButton = new PictureBox();
 			pictureBox1 = new PictureBox();
+			contextMenuStrip1 = new ContextMenuStrip(components);
+			buyBookToolStripMenuItem = new ToolStripMenuItem();
 			panel1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
 			panel5.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)exit).BeginInit();
 			((System.ComponentModel.ISupportInitialize)addBooksImageButton).BeginInit();
 			((System.ComponentModel.ISupportInitialize)ordersImageButton).BeginInit();
 			((System.ComponentModel.ISupportInitialize)usersPictureButton).BeginInit();
 			panel2.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
 			((System.ComponentModel.ISupportInitialize)closeWindowButton).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+			contextMenuStrip1.SuspendLayout();
 			SuspendLayout();
 			// 
 			// panel1
 			// 
 			panel1.BackColor = Color.FromArgb(241, 227, 203);
+			panel1.Controls.Add(label7);
+			panel1.Controls.Add(button1);
+			panel1.Controls.Add(button2);
+			panel1.Controls.Add(textBox1);
+			panel1.Controls.Add(label11);
+			panel1.Controls.Add(button3);
+			panel1.Controls.Add(button4);
+			panel1.Controls.Add(textBox2);
+			panel1.Controls.Add(dataGridView1);
 			panel1.Controls.Add(label8);
 			panel1.Controls.Add(label6);
 			panel1.Controls.Add(label5);
@@ -71,6 +92,92 @@
 			panel1.Name = "panel1";
 			panel1.Size = new Size(857, 557);
 			panel1.TabIndex = 0;
+			// 
+			// label7
+			// 
+			label7.AutoSize = true;
+			label7.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
+			label7.Location = new Point(527, 90);
+			label7.Name = "label7";
+			label7.Size = new Size(82, 15);
+			label7.TabIndex = 47;
+			label7.Text = "Име на книга";
+			// 
+			// button1
+			// 
+			button1.Location = new Point(715, 108);
+			button1.Name = "button1";
+			button1.Size = new Size(28, 23);
+			button1.TabIndex = 46;
+			button1.Text = "x";
+			button1.UseVisualStyleBackColor = true;
+			button1.Visible = false;
+			button1.Click += button1_Click;
+			// 
+			// button2
+			// 
+			button2.Location = new Point(665, 108);
+			button2.Name = "button2";
+			button2.Size = new Size(49, 23);
+			button2.TabIndex = 45;
+			button2.Text = "Търси";
+			button2.UseVisualStyleBackColor = true;
+			button2.Click += button2_Click;
+			// 
+			// textBox1
+			// 
+			textBox1.Location = new Point(527, 108);
+			textBox1.Name = "textBox1";
+			textBox1.Size = new Size(132, 23);
+			textBox1.TabIndex = 44;
+			// 
+			// label11
+			// 
+			label11.AutoSize = true;
+			label11.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
+			label11.Location = new Point(255, 90);
+			label11.Name = "label11";
+			label11.Size = new Size(86, 15);
+			label11.TabIndex = 43;
+			label11.Text = "Име на автор";
+			// 
+			// button3
+			// 
+			button3.Location = new Point(443, 108);
+			button3.Name = "button3";
+			button3.Size = new Size(28, 23);
+			button3.TabIndex = 42;
+			button3.Text = "x";
+			button3.UseVisualStyleBackColor = true;
+			button3.Visible = false;
+			button3.Click += button3_Click;
+			// 
+			// button4
+			// 
+			button4.Location = new Point(393, 108);
+			button4.Name = "button4";
+			button4.Size = new Size(49, 23);
+			button4.TabIndex = 41;
+			button4.Text = "Търси";
+			button4.UseVisualStyleBackColor = true;
+			button4.Click += button4_Click;
+			// 
+			// textBox2
+			// 
+			textBox2.Location = new Point(255, 108);
+			textBox2.Name = "textBox2";
+			textBox2.Size = new Size(132, 23);
+			textBox2.TabIndex = 40;
+			// 
+			// dataGridView1
+			// 
+			dataGridView1.BackgroundColor = Color.FromArgb(241, 227, 203);
+			dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			dataGridView1.Location = new Point(255, 137);
+			dataGridView1.Name = "dataGridView1";
+			dataGridView1.Size = new Size(487, 379);
+			dataGridView1.TabIndex = 39;
+			dataGridView1.CellMouseDown += dataGridView1_CellMouseDown;
 			// 
 			// label8
 			// 
@@ -219,7 +326,6 @@
 			// panel2
 			// 
 			panel2.BackColor = Color.FromArgb(249, 179, 132);
-			panel2.Controls.Add(pictureBox3);
 			panel2.Controls.Add(pictureBox2);
 			panel2.Controls.Add(titleForm);
 			panel2.Controls.Add(closeWindowButton);
@@ -228,15 +334,6 @@
 			panel2.Name = "panel2";
 			panel2.Size = new Size(857, 30);
 			panel2.TabIndex = 0;
-			// 
-			// pictureBox3
-			// 
-			pictureBox3.Image = Properties.Resources.shopping_cart;
-			pictureBox3.Location = new Point(234, 3);
-			pictureBox3.Name = "pictureBox3";
-			pictureBox3.Size = new Size(24, 24);
-			pictureBox3.TabIndex = 5;
-			pictureBox3.TabStop = false;
 			// 
 			// pictureBox2
 			// 
@@ -277,6 +374,19 @@
 			pictureBox1.TabIndex = 0;
 			pictureBox1.TabStop = false;
 			// 
+			// contextMenuStrip1
+			// 
+			contextMenuStrip1.Items.AddRange(new ToolStripItem[] { buyBookToolStripMenuItem });
+			contextMenuStrip1.Name = "contextMenuStrip1";
+			contextMenuStrip1.Size = new Size(102, 26);
+			// 
+			// buyBookToolStripMenuItem
+			// 
+			buyBookToolStripMenuItem.Name = "buyBookToolStripMenuItem";
+			buyBookToolStripMenuItem.Size = new Size(101, 22);
+			buyBookToolStripMenuItem.Text = "Купи";
+			buyBookToolStripMenuItem.Click += buyBookToolStripMenuItem_Click;
+			// 
 			// UserViewBooks
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
@@ -293,6 +403,7 @@
 			Text = "Books";
 			panel1.ResumeLayout(false);
 			panel1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
 			panel5.ResumeLayout(false);
 			panel5.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)exit).EndInit();
@@ -301,10 +412,10 @@
 			((System.ComponentModel.ISupportInitialize)usersPictureButton).EndInit();
 			panel2.ResumeLayout(false);
 			panel2.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
 			((System.ComponentModel.ISupportInitialize)closeWindowButton).EndInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+			contextMenuStrip1.ResumeLayout(false);
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -330,7 +441,17 @@
 		private Label titleForm;
 		private Label label9;
 		private PictureBox pictureBox2;
-		private PictureBox pictureBox3;
+		private Label label7;
+		private Button button1;
+		private Button button2;
+		private TextBox textBox1;
+		private Label label11;
+		private Button button3;
+		private Button button4;
+		private TextBox textBox2;
+		private DataGridView dataGridView1;
+		private ContextMenuStrip contextMenuStrip1;
+		private ToolStripMenuItem buyBookToolStripMenuItem;
 	}
 }
 	

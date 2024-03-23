@@ -29,6 +29,19 @@
 		private void InitializeComponent()
 		{
 			panel1 = new Panel();
+			button5 = new Button();
+			button4 = new Button();
+			label10 = new Label();
+			textBox1 = new TextBox();
+			button3 = new Button();
+			button2 = new Button();
+			button1 = new Button();
+			label13 = new Label();
+			label12 = new Label();
+			titleBook = new TextBox();
+			label7 = new Label();
+			priceBox = new TextBox();
+			quantityBox = new TextBox();
 			label8 = new Label();
 			label6 = new Label();
 			label5 = new Label();
@@ -48,22 +61,6 @@
 			titleForm = new Label();
 			closeWindowButton = new PictureBox();
 			pictureBox1 = new PictureBox();
-			label13 = new Label();
-			label12 = new Label();
-			titleBook = new TextBox();
-			label7 = new Label();
-			priceBox = new TextBox();
-			quantityBox = new TextBox();
-			button1 = new Button();
-			button2 = new Button();
-			button3 = new Button();
-			button4 = new Button();
-			label10 = new Label();
-			textBox1 = new TextBox();
-			button5 = new Button();
-			label11 = new Label();
-			textBox2 = new TextBox();
-			button6 = new Button();
 			panel1.SuspendLayout();
 			panel5.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)exit).BeginInit();
@@ -80,10 +77,7 @@
 			// panel1
 			// 
 			panel1.BackColor = Color.FromArgb(241, 227, 203);
-			panel1.Controls.Add(button6);
 			panel1.Controls.Add(button5);
-			panel1.Controls.Add(label11);
-			panel1.Controls.Add(textBox2);
 			panel1.Controls.Add(button4);
 			panel1.Controls.Add(label10);
 			panel1.Controls.Add(textBox1);
@@ -103,6 +97,151 @@
 			panel1.Name = "panel1";
 			panel1.Size = new Size(857, 557);
 			panel1.TabIndex = 0;
+			// 
+			// button5
+			// 
+			button5.BackgroundImageLayout = ImageLayout.None;
+			button5.Font = new Font("Segoe UI Light", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			button5.ForeColor = Color.FromArgb(192, 0, 0);
+			button5.Location = new Point(320, 368);
+			button5.Name = "button5";
+			button5.Size = new Size(327, 30);
+			button5.TabIndex = 85;
+			button5.Text = "Смени парола";
+			button5.UseVisualStyleBackColor = true;
+			button5.Click += button5_Click;
+			// 
+			// button4
+			// 
+			button4.Image = Properties.Resources.pencil;
+			button4.Location = new Point(655, 316);
+			button4.Name = "button4";
+			button4.Size = new Size(25, 25);
+			button4.TabIndex = 80;
+			button4.UseVisualStyleBackColor = true;
+			button4.Click += button4_Click;
+			// 
+			// label10
+			// 
+			label10.AutoSize = true;
+			label10.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+			label10.ForeColor = Color.FromArgb(202, 81, 22);
+			label10.Location = new Point(320, 298);
+			label10.Name = "label10";
+			label10.Size = new Size(64, 15);
+			label10.TabIndex = 79;
+			label10.Text = "Username";
+			// 
+			// textBox1
+			// 
+			textBox1.BackColor = Color.White;
+			textBox1.BorderStyle = BorderStyle.FixedSingle;
+			textBox1.Enabled = false;
+			textBox1.Font = new Font("Segoe UI", 9.75F);
+			textBox1.ForeColor = SystemColors.Desktop;
+			textBox1.Location = new Point(320, 316);
+			textBox1.Name = "textBox1";
+			textBox1.Size = new Size(327, 25);
+			textBox1.TabIndex = 78;
+			// 
+			// button3
+			// 
+			button3.Image = Properties.Resources.pencil;
+			button3.Location = new Point(655, 253);
+			button3.Name = "button3";
+			button3.Size = new Size(25, 25);
+			button3.TabIndex = 77;
+			button3.UseVisualStyleBackColor = true;
+			button3.Click += button3_Click;
+			// 
+			// button2
+			// 
+			button2.Image = Properties.Resources.pencil;
+			button2.Location = new Point(655, 191);
+			button2.Name = "button2";
+			button2.Size = new Size(25, 25);
+			button2.TabIndex = 76;
+			button2.UseVisualStyleBackColor = true;
+			button2.Click += button2_Click;
+			// 
+			// button1
+			// 
+			button1.Image = Properties.Resources.pencil;
+			button1.Location = new Point(655, 134);
+			button1.Name = "button1";
+			button1.Size = new Size(25, 25);
+			button1.TabIndex = 75;
+			button1.UseVisualStyleBackColor = true;
+			button1.Click += button1_Click;
+			// 
+			// label13
+			// 
+			label13.AutoSize = true;
+			label13.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+			label13.ForeColor = Color.FromArgb(202, 81, 22);
+			label13.Location = new Point(320, 235);
+			label13.Name = "label13";
+			label13.Size = new Size(36, 15);
+			label13.TabIndex = 74;
+			label13.Text = "Email";
+			// 
+			// label12
+			// 
+			label12.AutoSize = true;
+			label12.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+			label12.ForeColor = Color.FromArgb(202, 81, 22);
+			label12.Location = new Point(320, 174);
+			label12.Name = "label12";
+			label12.Size = new Size(62, 15);
+			label12.TabIndex = 73;
+			label12.Text = "Фамилия";
+			// 
+			// titleBook
+			// 
+			titleBook.BackColor = Color.White;
+			titleBook.BorderStyle = BorderStyle.FixedSingle;
+			titleBook.Enabled = false;
+			titleBook.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			titleBook.ForeColor = SystemColors.Desktop;
+			titleBook.Location = new Point(320, 134);
+			titleBook.Name = "titleBook";
+			titleBook.Size = new Size(327, 25);
+			titleBook.TabIndex = 66;
+			// 
+			// label7
+			// 
+			label7.AutoSize = true;
+			label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+			label7.ForeColor = Color.FromArgb(202, 81, 22);
+			label7.Location = new Point(320, 116);
+			label7.Name = "label7";
+			label7.Size = new Size(32, 15);
+			label7.TabIndex = 70;
+			label7.Text = "Име";
+			// 
+			// priceBox
+			// 
+			priceBox.BackColor = Color.White;
+			priceBox.BorderStyle = BorderStyle.FixedSingle;
+			priceBox.Enabled = false;
+			priceBox.Font = new Font("Segoe UI", 9.75F);
+			priceBox.ForeColor = SystemColors.Desktop;
+			priceBox.Location = new Point(320, 192);
+			priceBox.Name = "priceBox";
+			priceBox.Size = new Size(327, 25);
+			priceBox.TabIndex = 68;
+			// 
+			// quantityBox
+			// 
+			quantityBox.BackColor = Color.White;
+			quantityBox.BorderStyle = BorderStyle.FixedSingle;
+			quantityBox.Enabled = false;
+			quantityBox.Font = new Font("Segoe UI", 9.75F);
+			quantityBox.ForeColor = SystemColors.Desktop;
+			quantityBox.Location = new Point(320, 253);
+			quantityBox.Name = "quantityBox";
+			quantityBox.Size = new Size(327, 25);
+			quantityBox.TabIndex = 69;
 			// 
 			// label8
 			// 
@@ -270,6 +409,7 @@
 			pictureBox3.Size = new Size(24, 24);
 			pictureBox3.TabIndex = 2;
 			pictureBox3.TabStop = false;
+			pictureBox3.Click += pictureBox3_Click;
 			// 
 			// pictureBox2
 			// 
@@ -309,178 +449,6 @@
 			pictureBox1.Size = new Size(100, 50);
 			pictureBox1.TabIndex = 0;
 			pictureBox1.TabStop = false;
-			// 
-			// label13
-			// 
-			label13.AutoSize = true;
-			label13.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-			label13.ForeColor = Color.FromArgb(202, 81, 22);
-			label13.Location = new Point(320, 226);
-			label13.Name = "label13";
-			label13.Size = new Size(36, 15);
-			label13.TabIndex = 74;
-			label13.Text = "Email";
-			// 
-			// label12
-			// 
-			label12.AutoSize = true;
-			label12.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-			label12.ForeColor = Color.FromArgb(202, 81, 22);
-			label12.Location = new Point(320, 165);
-			label12.Name = "label12";
-			label12.Size = new Size(62, 15);
-			label12.TabIndex = 73;
-			label12.Text = "Фамилия";
-			// 
-			// titleBook
-			// 
-			titleBook.BackColor = Color.White;
-			titleBook.BorderStyle = BorderStyle.FixedSingle;
-			titleBook.Enabled = false;
-			titleBook.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			titleBook.ForeColor = SystemColors.Desktop;
-			titleBook.Location = new Point(320, 125);
-			titleBook.Name = "titleBook";
-			titleBook.Size = new Size(327, 25);
-			titleBook.TabIndex = 66;
-			// 
-			// label7
-			// 
-			label7.AutoSize = true;
-			label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-			label7.ForeColor = Color.FromArgb(202, 81, 22);
-			label7.Location = new Point(320, 107);
-			label7.Name = "label7";
-			label7.Size = new Size(32, 15);
-			label7.TabIndex = 70;
-			label7.Text = "Име";
-			// 
-			// priceBox
-			// 
-			priceBox.BackColor = Color.White;
-			priceBox.BorderStyle = BorderStyle.FixedSingle;
-			priceBox.Enabled = false;
-			priceBox.Font = new Font("Segoe UI", 9.75F);
-			priceBox.ForeColor = SystemColors.Desktop;
-			priceBox.Location = new Point(320, 183);
-			priceBox.Name = "priceBox";
-			priceBox.Size = new Size(327, 25);
-			priceBox.TabIndex = 68;
-			// 
-			// quantityBox
-			// 
-			quantityBox.BackColor = Color.White;
-			quantityBox.BorderStyle = BorderStyle.FixedSingle;
-			quantityBox.Enabled = false;
-			quantityBox.Font = new Font("Segoe UI", 9.75F);
-			quantityBox.ForeColor = SystemColors.Desktop;
-			quantityBox.Location = new Point(320, 244);
-			quantityBox.Name = "quantityBox";
-			quantityBox.Size = new Size(327, 25);
-			quantityBox.TabIndex = 69;
-			// 
-			// button1
-			// 
-			button1.Image = Properties.Resources.pencil;
-			button1.Location = new Point(655, 125);
-			button1.Name = "button1";
-			button1.Size = new Size(25, 25);
-			button1.TabIndex = 75;
-			button1.UseVisualStyleBackColor = true;
-			// 
-			// button2
-			// 
-			button2.Image = Properties.Resources.pencil;
-			button2.Location = new Point(655, 182);
-			button2.Name = "button2";
-			button2.Size = new Size(25, 25);
-			button2.TabIndex = 76;
-			button2.UseVisualStyleBackColor = true;
-			// 
-			// button3
-			// 
-			button3.Image = Properties.Resources.pencil;
-			button3.Location = new Point(655, 244);
-			button3.Name = "button3";
-			button3.Size = new Size(25, 25);
-			button3.TabIndex = 77;
-			button3.UseVisualStyleBackColor = true;
-			// 
-			// button4
-			// 
-			button4.Image = Properties.Resources.pencil;
-			button4.Location = new Point(655, 307);
-			button4.Name = "button4";
-			button4.Size = new Size(25, 25);
-			button4.TabIndex = 80;
-			button4.UseVisualStyleBackColor = true;
-			// 
-			// label10
-			// 
-			label10.AutoSize = true;
-			label10.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-			label10.ForeColor = Color.FromArgb(202, 81, 22);
-			label10.Location = new Point(320, 289);
-			label10.Name = "label10";
-			label10.Size = new Size(64, 15);
-			label10.TabIndex = 79;
-			label10.Text = "Username";
-			// 
-			// textBox1
-			// 
-			textBox1.BackColor = Color.White;
-			textBox1.BorderStyle = BorderStyle.FixedSingle;
-			textBox1.Enabled = false;
-			textBox1.Font = new Font("Segoe UI", 9.75F);
-			textBox1.ForeColor = SystemColors.Desktop;
-			textBox1.Location = new Point(320, 307);
-			textBox1.Name = "textBox1";
-			textBox1.Size = new Size(327, 25);
-			textBox1.TabIndex = 78;
-			// 
-			// button5
-			// 
-			button5.Image = Properties.Resources.pencil;
-			button5.Location = new Point(655, 368);
-			button5.Name = "button5";
-			button5.Size = new Size(25, 25);
-			button5.TabIndex = 83;
-			button5.UseVisualStyleBackColor = true;
-			// 
-			// label11
-			// 
-			label11.AutoSize = true;
-			label11.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-			label11.ForeColor = Color.FromArgb(202, 81, 22);
-			label11.Location = new Point(320, 350);
-			label11.Name = "label11";
-			label11.Size = new Size(59, 15);
-			label11.TabIndex = 82;
-			label11.Text = "Password";
-			// 
-			// textBox2
-			// 
-			textBox2.BackColor = Color.White;
-			textBox2.BorderStyle = BorderStyle.FixedSingle;
-			textBox2.Enabled = false;
-			textBox2.Font = new Font("Segoe UI", 9.75F);
-			textBox2.ForeColor = SystemColors.Desktop;
-			textBox2.Location = new Point(320, 368);
-			textBox2.Name = "textBox2";
-			textBox2.Size = new Size(327, 25);
-			textBox2.TabIndex = 81;
-			// 
-			// button6
-			// 
-			button6.BackgroundImageLayout = ImageLayout.None;
-			button6.Font = new Font("Segoe UI Light", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			button6.ForeColor = Color.FromArgb(192, 0, 0);
-			button6.Location = new Point(320, 433);
-			button6.Name = "button6";
-			button6.Size = new Size(327, 30);
-			button6.TabIndex = 84;
-			button6.Text = "Изтрий акаунт";
-			button6.UseVisualStyleBackColor = true;
 			// 
 			// WorkerViewProfile
 			// 
@@ -545,13 +513,10 @@
 		private TextBox quantityBox;
 		private Button button3;
 		private Button button2;
-		private Button button6;
-		private Button button5;
-		private Label label11;
-		private TextBox textBox2;
 		private Button button4;
 		private Label label10;
 		private TextBox textBox1;
+		private Button button5;
 	}
 }
 	

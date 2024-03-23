@@ -17,5 +17,7 @@ namespace BookApp.Forms.DTO
         public decimal Price { get; set; }
 
 		public int BookQuantity { get; set; }
-	}
+
+        public string Description { get; set; }
+    }
 }

@@ -528,6 +528,7 @@
 			pictureBox3.Size = new Size(24, 24);
 			pictureBox3.TabIndex = 5;
 			pictureBox3.TabStop = false;
+			pictureBox3.Click += pictureBox3_Click;
 			// 
 			// pictureBox2
 			// 
@@ -577,14 +578,14 @@
 			// изтрийToolStripMenuItem
 			// 
 			изтрийToolStripMenuItem.Name = "изтрийToolStripMenuItem";
-			изтрийToolStripMenuItem.Size = new Size(180, 22);
+			изтрийToolStripMenuItem.Size = new Size(172, 22);
 			изтрийToolStripMenuItem.Text = "Запиши промени";
 			изтрийToolStripMenuItem.Click += updateToolStripMenuItem_Click;
 			// 
 			// изтрийToolStripMenuItem1
 			// 
 			изтрийToolStripMenuItem1.Name = "изтрийToolStripMenuItem1";
-			изтрийToolStripMenuItem1.Size = new Size(180, 22);
+			изтрийToolStripMenuItem1.Size = new Size(172, 22);
 			изтрийToolStripMenuItem1.Text = "Изтрий";
 			изтрийToolStripMenuItem1.Click += deleteToolStripMenuItem_Click;
 			// 

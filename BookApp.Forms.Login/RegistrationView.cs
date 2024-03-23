@@ -9,6 +9,8 @@ namespace BookApp.Forms.Login
 		public RegistrationView()
 		{
 			InitializeComponent();
+
+			textBox5.PasswordChar = '*';
 		}
 
 		private void pictureBox2_Click(object sender, EventArgs e)

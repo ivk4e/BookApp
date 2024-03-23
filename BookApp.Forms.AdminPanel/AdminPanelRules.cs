@@ -21,7 +21,6 @@ namespace BookApp.Forms.AdminPanel
 
 			LoadUsersListBox();
 			LoadWorkersListBox();
-
 		}
 
 		private void ordersImageButton_Click(object sender, EventArgs e)

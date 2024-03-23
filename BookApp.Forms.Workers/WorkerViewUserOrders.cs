@@ -1,23 +1,25 @@
 ﻿using BookApp.Data;
+using BookApp.Data.Models;
 using BookApp.Forms.Services;
 using BookApp.Forms.Services.Admin;
 using BookApp.Forms.Services.LoginAndRegister;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic;
 
-namespace BookApp.Forms.Users
+namespace BookApp.Forms.Workers
 {
-	public partial class UserViewOrders : Form
+	public partial class WorkerViewUserOrders : Form
 	{
 		private readonly BookAppContext dbContext;
 		private readonly OrdersUtility ordersUtility;
 
-		public UserViewOrders()
+		public WorkerViewUserOrders()
 		{
 			InitializeComponent();
 			dbContext = new BookAppContext();
 			ordersUtility = new OrdersUtility(dbContext);
 
 			var currentUser = SessionManager.GetCurrentUser();
-			titleForm.Text = currentUser.Username;
 
 			if (currentUser == null)
 			{
@@ -30,13 +32,8 @@ namespace BookApp.Forms.Users
 			if (!ordersUtility.GetOrdersFromDatabaseForSpecificUser(dataGridView2, currentUser.UserId))
 			{
 				label7.Visible = true;
-				dataGridView2.Visible = false;
+				dataGridView2.Visible = false; 
 			}
-		}
-
-		private void ordersImageButton_Click(object sender, EventArgs e)
-		{
-			FormUtility.ShowNewForm<UserViewBooks>(this);
 		}
 
 		private void pictureBox2_Click(object sender, EventArgs e)
@@ -46,12 +43,22 @@ namespace BookApp.Forms.Users
 
 		private void addBooksImageButton_Click(object sender, EventArgs e)
 		{
-			FormUtility.ShowNewForm<UserViewProfile>(this);
+			FormUtility.ShowNewForm<WorkerViewProfile>(this);
 		}
 
 		private void exit_Click(object sender, EventArgs e)
 		{
 			this.Close();
+		}
+
+		private void usersPictureButton_Click(object sender, EventArgs e)
+		{
+			FormUtility.ShowNewForm<WorkersViewOrders>(this);
+		}
+
+		private void ordersImageButton_Click(object sender, EventArgs e)
+		{
+			FormUtility.ShowNewForm<WorkerViewBooks>(this);
 		}
 	}
 }

@@ -1,4 +1,5 @@
 ﻿using BookApp.Data;
+using BookApp.Data.Models;
 
 namespace BookApp.Forms.Services.LoginAndRegister
 {
@@ -50,5 +51,12 @@ namespace BookApp.Forms.Services.LoginAndRegister
 
             return "unkown";
         }
-    }
+
+		public User GetUserInfo(string username) => dbContext.Users.FirstOrDefault(u => u.Username == username);
+
+		public static void SetCurrentUser(User user)
+		{
+			SessionManager.SetCurrentUser(user);
+		}
+	}
 }
