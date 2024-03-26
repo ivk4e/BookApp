@@ -1,14 +1,14 @@
 ﻿using BookApp.Data;
 using BookApp.Data.Models;
-using BookApp.Forms.Services;
-using BookApp.Forms.Services.Admin;
+using BookApp.Forms.Services.DataGridViewUtilities;
+using BookApp.Forms.Services.DbEntityUtilities;
 using BookApp.Forms.Services.LoginAndRegister;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualBasic;
 
 namespace BookApp.Forms.Workers
 {
-	public partial class WorkerViewUserOrders : Form
+    public partial class WorkerViewUserOrders : Form
 	{
 		private readonly BookAppContext dbContext;
 		private readonly OrdersUtility ordersUtility;

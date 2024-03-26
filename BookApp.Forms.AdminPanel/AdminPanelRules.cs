@@ -2,15 +2,15 @@
 using BookApp.Data;
 using BookApp.Data.Models;
 using BookApp.Forms.DTO;
-using BookApp.Forms.Services;
-using BookApp.Forms.Services.Admin;
+using BookApp.Forms.Services.DbEntityUtilities;
+using BookApp.Forms.Services.ListBoxUtilities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.VisualBasic.ApplicationServices;
 
 namespace BookApp.Forms.AdminPanel
 {
-	public partial class AdminPanelRules : Form
+    public partial class AdminPanelRules : Form
 	{
 		private readonly BookAppContext dbContext;
 

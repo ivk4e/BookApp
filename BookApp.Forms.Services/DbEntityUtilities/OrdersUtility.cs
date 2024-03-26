@@ -1,5 +1,6 @@
 ﻿using BookApp.Data;
 using BookApp.Forms.DTO;
+using BookApp.Forms.Services.DataGridViewUtilities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BookApp.Forms.Services.Admin
+namespace BookApp.Forms.Services.DbEntityUtilities
 {
     public class OrdersUtility
     {
@@ -33,11 +34,11 @@ namespace BookApp.Forms.Services.Admin
                    TotalPrice = o.BookOrders.Sum(b => b.Quantity * b.Book.Price),
                    Status = o.StatusOrder.StatusName
                })
-			   .OrderByDescending(o => o.DateOrder)
-		       .ThenBy(o => o.OrderId)
-			   .ThenBy(o => o.CustomerName)
-			   .ThenByDescending(o => o.Status)
-			   .ToList();
+               .OrderByDescending(o => o.DateOrder)
+               .ThenBy(o => o.OrderId)
+               .ThenBy(o => o.CustomerName)
+               .ThenByDescending(o => o.Status)
+               .ToList();
 
             return filteredOrders;
         }
@@ -63,7 +64,7 @@ namespace BookApp.Forms.Services.Admin
 
             DataGridViewUtility.LoadFilterOrdersToDataGridView(dataGridView, orders);
         }
-        
+
         public bool GetOrdersFromDatabaseForSpecificUser(DataGridView dataGridView, int userId)
         {
             var orders = dbContext.Orders
@@ -84,53 +85,53 @@ namespace BookApp.Forms.Services.Admin
 
             if (orders != null)
             {
-				DataGridViewUtility.LoadFilterOrdersToDataGridViewForSpecificUser(dataGridView, orders);
+                DataGridViewUtility.LoadFilterOrdersToDataGridViewForSpecificUser(dataGridView, orders);
                 return true;
-			}
+            }
 
             return false;
-		}
-        
+        }
+
         public bool UpdateOrderStatus(int orderId, int statusId)
         {
-			try
-	        {
-				var order = dbContext.Orders.FirstOrDefault(o => o.OrderId == orderId);
-				if (order != null)
-				{
-					var bookOrders = dbContext.BookOrders.Where(bo => bo.OrderId == orderId).ToList();
+            try
+            {
+                var order = dbContext.Orders.FirstOrDefault(o => o.OrderId == orderId);
+                if (order != null)
+                {
+                    var bookOrders = dbContext.BookOrders.Where(bo => bo.OrderId == orderId).ToList();
 
-					order.StatusId = statusId;
+                    order.StatusId = statusId;
 
-					foreach (var bookOrder in bookOrders)
-					{
-						var book = dbContext.Books.FirstOrDefault(b => b.BookId == bookOrder.BookId);
-						if (book != null)
-						{
-							if (statusId == 1)
-							{
-								book.BookQuantity -= bookOrder.Quantity;
-							}
-							else if (statusId == 3)
-							{
-								book.BookQuantity += bookOrder.Quantity;
-							}
-						}
-					}
+                    foreach (var bookOrder in bookOrders)
+                    {
+                        var book = dbContext.Books.FirstOrDefault(b => b.BookId == bookOrder.BookId);
+                        if (book != null)
+                        {
+                            if (statusId == 1)
+                            {
+                                book.BookQuantity -= bookOrder.Quantity;
+                            }
+                            else if (statusId == 3)
+                            {
+                                book.BookQuantity += bookOrder.Quantity;
+                            }
+                        }
+                    }
 
-					dbContext.SaveChanges();
+                    dbContext.SaveChanges();
 
-					return true;
-				}
+                    return true;
+                }
 
-				return false;
-			}
+                return false;
+            }
 
             catch (Exception ex)
             {
-				MessageBox.Show($"Грешка при обновяването на статуса: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-				return false;
-			}
-		}
+                MessageBox.Show($"Грешка при обновяването на статуса: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
     }
 }

@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BookApp.Forms.Services.Admin
+namespace BookApp.Forms.Services.DbEntityUtilities
 {
     public class BooksUtility
     {
@@ -85,7 +85,7 @@ namespace BookApp.Forms.Services.Admin
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        
+
         public void LoadUserViewBooksToDataGridView(DataGridView dataGridView)
         {
             dataGridView.Rows.Clear();
@@ -246,124 +246,124 @@ namespace BookApp.Forms.Services.Admin
             }
         }
 
-		public bool UpdateBook(int id, string title, string author, decimal price, int quantity, string description)
-		{
-			try
-			{
-				var book = dbContext.Books.FirstOrDefault(b => b.BookId == id);
-				var authorName = dbContext.Authors.FirstOrDefault(a => a.Name == author);
+        public bool UpdateBook(int id, string title, string author, decimal price, int quantity, string description)
+        {
+            try
+            {
+                var book = dbContext.Books.FirstOrDefault(b => b.BookId == id);
+                var authorName = dbContext.Authors.FirstOrDefault(a => a.Name == author);
 
-				if (authorName == null)
-				{
-					MessageBox.Show("Не съществува такъв автор!");
-					return false;
-				}
+                if (authorName == null)
+                {
+                    MessageBox.Show("Не съществува такъв автор!");
+                    return false;
+                }
 
-				if (book != null)
-				{
-					book.Title = title;
-					book.Author = authorName;
-					book.Price = price;
-					book.BookQuantity = quantity;
-					book.Description = description;
+                if (book != null)
+                {
+                    book.Title = title;
+                    book.Author = authorName;
+                    book.Price = price;
+                    book.BookQuantity = quantity;
+                    book.Description = description;
 
-					dbContext.SaveChanges();
+                    dbContext.SaveChanges();
 
-					return true;
-				}
+                    return true;
+                }
 
-				return false;
+                return false;
 
-			}
-			catch (Exception)
-			{
-				return false;
-			}
-		}
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
 
-		public void AddBookToUserOrder(DataGridView dataGridView)
-		{
-			var selectedBooks = new List<Book>();
-			foreach (DataGridViewRow row in dataGridView.SelectedRows)
-			{
-				int bookId = Convert.ToInt32(row.Cells[0].Value);
-				var book = dbContext.Books.FirstOrDefault(b => b.BookId == bookId);
-				if (book != null)
-				{
-					selectedBooks.Add(book);
-				}
-			}
+        public void AddBookToUserOrder(DataGridView dataGridView)
+        {
+            var selectedBooks = new List<Book>();
+            foreach (DataGridViewRow row in dataGridView.SelectedRows)
+            {
+                int bookId = Convert.ToInt32(row.Cells[0].Value);
+                var book = dbContext.Books.FirstOrDefault(b => b.BookId == bookId);
+                if (book != null)
+                {
+                    selectedBooks.Add(book);
+                }
+            }
 
-			foreach (Book book in selectedBooks)
-			{
-				if (book.BookQuantity == 0)
-				{
-					MessageBox.Show($"Няма налични количества за '{book.Title}'.", "Грешка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-					return;
-				}
-			}
+            foreach (Book book in selectedBooks)
+            {
+                if (book.BookQuantity == 0)
+                {
+                    MessageBox.Show($"Няма налични количества за '{book.Title}'.", "Грешка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
 
-			if (selectedBooks.Count == 0)
-			{
-				MessageBox.Show("Моля изберете книга.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-				return;
-			}
+            if (selectedBooks.Count == 0)
+            {
+                MessageBox.Show("Моля изберете книга.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-			try
-			{
-				string quantityInput = Interaction.InputBox("Какво количество искате да поръчате?", "Количество");
+            try
+            {
+                string quantityInput = Interaction.InputBox("Какво количество искате да поръчате?", "Количество");
 
-				if (!int.TryParse(quantityInput, out int quantity) || quantity <= 0)
-				{
-					MessageBox.Show("Моля, въведете валидно количество.", "Грешка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-					return;
-				}
+                if (!int.TryParse(quantityInput, out int quantity) || quantity <= 0)
+                {
+                    MessageBox.Show("Моля, въведете валидно количество.", "Грешка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
-				foreach (Book book in selectedBooks)
-				{
-					if (quantity > book.BookQuantity)
-					{
-						MessageBox.Show($"Избраното количество за книгата '{book.Title}' надвишава наличното количество.", "Грешка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-						return;
-					}
-				}
+                foreach (Book book in selectedBooks)
+                {
+                    if (quantity > book.BookQuantity)
+                    {
+                        MessageBox.Show($"Избраното количество за книгата '{book.Title}' надвишава наличното количество.", "Грешка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
 
-				//Firstly we are creating for Orders
-				var newOrder = new Order
-				{
-					UserId = SessionManager.GetCurrentUser().UserId,
-					StatusId = 1,
-					DateOrder = DateTime.Now
-				};
-				dbContext.Orders.Add(newOrder);
-				dbContext.SaveChanges();
+                //Firstly we are creating for Orders
+                var newOrder = new Order
+                {
+                    UserId = SessionManager.GetCurrentUser().UserId,
+                    StatusId = 1,
+                    DateOrder = DateTime.Now
+                };
+                dbContext.Orders.Add(newOrder);
+                dbContext.SaveChanges();
 
-				foreach (Book book in selectedBooks)
-				{
-					//Secondly we are creating for BookOrders
-					var newBookOrder = new BookOrder
-					{
-						OrderId = newOrder.OrderId,
-						BookId = book.BookId,
-						Quantity = quantity
-					};
-					book.BookQuantity -= quantity;
-					
+                foreach (Book book in selectedBooks)
+                {
+                    //Secondly we are creating for BookOrders
+                    var newBookOrder = new BookOrder
+                    {
+                        OrderId = newOrder.OrderId,
+                        BookId = book.BookId,
+                        Quantity = quantity
+                    };
+                    book.BookQuantity -= quantity;
+
                     dbContext.BookOrders.Add(newBookOrder);
-				}
+                }
 
-				dbContext.SaveChanges();
+                dbContext.SaveChanges();
 
-				MessageBox.Show("Книгата е добавена успешно в поръчките!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show($"Грешка при добавяне на книгата: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-			}
-		}
+                MessageBox.Show("Книгата е добавена успешно в поръчките!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Грешка при добавяне на книгата: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
-		//Authors and Genres
-		public void LoadAuthorsToComboBox(ComboBox authorsComboBox)
+        //Authors and Genres
+        public void LoadAuthorsToComboBox(ComboBox authorsComboBox)
         {
             var authors = dbContext.Authors.ToList();
 

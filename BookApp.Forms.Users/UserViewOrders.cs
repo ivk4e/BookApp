@@ -1,11 +1,11 @@
 ﻿using BookApp.Data;
-using BookApp.Forms.Services;
-using BookApp.Forms.Services.Admin;
+using BookApp.Forms.Services.DataGridViewUtilities;
+using BookApp.Forms.Services.DbEntityUtilities;
 using BookApp.Forms.Services.LoginAndRegister;
 
 namespace BookApp.Forms.Users
 {
-	public partial class UserViewOrders : Form
+    public partial class UserViewOrders : Form
 	{
 		private readonly BookAppContext dbContext;
 		private readonly OrdersUtility ordersUtility;

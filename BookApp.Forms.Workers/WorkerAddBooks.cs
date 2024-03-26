@@ -1,7 +1,7 @@
 ﻿using BookApp.Data;
 using BookApp.Data.Models;
-using BookApp.Forms.Services;
-using BookApp.Forms.Services.Admin;
+using BookApp.Forms.Services.DataGridViewUtilities;
+using BookApp.Forms.Services.DbEntityUtilities;
 using BookApp.Forms.Services.LoginAndRegister;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace BookApp.Forms.Workers
 {
-	public partial class WorkerAddBooks : Form
+    public partial class WorkerAddBooks : Form
 	{
 		private BookAppContext dbContext;
 		private BooksUtility booksUtility;

@@ -1,10 +1,10 @@
-using BookApp.Forms.Services;
+using BookApp.Forms.Services.DbEntityUtilities;
 using BookApp.Forms.Services.LoginAndRegister;
 using System.Text.RegularExpressions;
 
 namespace BookApp.Forms.Login
 {
-	public partial class RegistrationView : Form
+    public partial class RegistrationView : Form
 	{
 		public RegistrationView()
 		{

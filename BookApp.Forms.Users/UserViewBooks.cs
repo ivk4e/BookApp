@@ -1,12 +1,12 @@
 using BookApp.Data;
-using BookApp.Forms.Services;
-using BookApp.Forms.Services.Admin;
+using BookApp.Forms.Services.DataGridViewUtilities;
+using BookApp.Forms.Services.DbEntityUtilities;
 using BookApp.Forms.Services.LoginAndRegister;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookApp.Forms.Users
 {
-	public partial class UserViewBooks : Form
+    public partial class UserViewBooks : Form
 	{
 		private readonly BookAppContext dbContext;
 		private BooksUtility booksUtility;

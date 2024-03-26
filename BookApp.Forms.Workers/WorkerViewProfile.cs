@@ -1,13 +1,14 @@
 ﻿using BookApp.Data;
 using BookApp.Data.Models;
 using BookApp.Forms.Services;
+using BookApp.Forms.Services.DbEntityUtilities;
 using BookApp.Forms.Services.LoginAndRegister;
 using Microsoft.VisualBasic;
 using System.Text.RegularExpressions;
 
 namespace BookApp.Forms.Workers
 {
-	public partial class WorkerViewProfile : Form
+    public partial class WorkerViewProfile : Form
 	{
 		private readonly BookAppContext dbContext;
 
