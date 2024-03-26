@@ -1,4 +1,4 @@
-using BookApp.Data.Models;
+﻿using BookApp.Data.Models;
 using BookApp.Forms.AdminPanel;
 using BookApp.Forms.Services;
 using BookApp.Forms.Services.LoginAndRegister;
@@ -59,13 +59,13 @@ namespace BookApp.Forms.Login
 				}
 				else
 				{
-					MessageBox.Show("Incorrect username or password", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					MessageBox.Show("Неправилно потребителско име или парола", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 
 			else
 			{
-				MessageBox.Show("Incorrect username or password", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Неправилно потребителско име или парола", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
 
@@ -78,7 +78,7 @@ namespace BookApp.Forms.Login
 		private static void ShowMessage(Data.Models.User user)
 		{
 			UserLogin.SetCurrentUser(user);
-			MessageBox.Show("Successful login!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			MessageBox.Show("Успешно влизане!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
 	}
 }

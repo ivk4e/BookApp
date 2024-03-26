@@ -30,9 +30,7 @@
     <Compile Update="WorkerViewProfile.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="WorkersViewOrders.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Update="WorkersViewOrders.cs" />
   </ItemGroup>
 
   <ItemGroup>
