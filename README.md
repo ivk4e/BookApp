@@ -6,17 +6,17 @@ BookApp is a Windows Forms application developed using C#, EntityFramework, and 
 - **Registration:** Users can register into the system by filling out a registration form. Validation checks ensure that the entered data is correct and meets specified criteria such as name format, password length, and age requirement.
 - **Login:** Registered users can log into the application using their credentials.
 - **Administrator Panels:** Administrators have access to various functionalities including:
-        - Changing user types from ordinary to worker or vice versa.
-        - Reviewing customer orders and modifying their status.
-        - Adding new books, authors, and genres.
+- Changing user types from ordinary to worker or vice versa.
+- Reviewing customer orders and modifying their status.
+- Adding new books, authors, and genres.
 - **Worker Panels:** Workers can:
         - Manage orders and change their status.
         - Add books, authors, and genres.
         - View their profile and purchase books.
 - **Ordinary User Panels:** Ordinary users have limited functionalities such as:
-        - Viewing purchased books.
-        - Viewing catalogued.
-        - Editing their profile.
+- Viewing purchased books.
+- Viewing catalogued.
+- Editing their profile.
 
 ## Usage
 To use this project:
